@@ -9,6 +9,31 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+
+![image](http://imgur.com/e4zaaye)
+
+
+![image](http://imgur.com/yNfyP3c)
+
+```swift
+let btn             = JOEmojiableBtn(frame: CGRectMake(40,200,50,50))
+btn.delegate        = self
+btn.backgroundColor = UIColor.greenColor()
+btn.dataset         = [
+    JOEmojiableOption(image: "img_1", name: "dislike"),
+    JOEmojiableOption(image: "img_2", name: "broken"),
+    JOEmojiableOption(image: "img_3", name: "he he"),
+    JOEmojiableOption(image: "img_4", name: "ooh"),
+    JOEmojiableOption(image: "img_5", name: "meh!"),
+    JOEmojiableOption(image: "img_6", name: "ahh!")
+]
+self.view.addSubview(btn)
+```
+
+
+
+
+
 ## Requirements
 
 ## Installation

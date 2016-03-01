@@ -46,7 +46,7 @@ public protocol JOEmojiableDelegate{
     func canceledAction(sender:JOEmojiableBtn)
 }
 
-public class JOEmojiableBtn: UIView {
+public class JOEmojiableBtn: UIButton {
     public var delegate:JOEmojiableDelegate!
     public var dataset:[JOEmojiableOption]!
     
@@ -55,7 +55,7 @@ public class JOEmojiableBtn: UIView {
     var drag:UIPanGestureRecognizer!
     
     var active:Bool!
-    var selected:Int!
+    var selectedItem:Int!
     var bgClear:SelectorView!
     var options:UIView!
     var origin:CGPoint!
@@ -127,7 +127,7 @@ public class JOEmojiableBtn: UIView {
         if !active {
             if dataset != nil {
                 let frameSV = UIScreen.mainScreen().bounds
-                selected = -1
+                selectedItem = -1
                 active = true
                 bgClear = SelectorView(frame: frameSV)
                 bgClear.delegate = self
@@ -207,7 +207,7 @@ public class JOEmojiableBtn: UIView {
                                 if (optionIdx < 0){
                                     self.delegate.canceledAction(self)
                                 }else{
-                                    self.delegate.selectedOption(self, index: self.selected)
+                                    self.delegate.selectedOption(self, index: self.selectedItem)
                                 }
                         })
                     }
@@ -216,7 +216,7 @@ public class JOEmojiableBtn: UIView {
     }
     
     private func loseFocus(){
-        selected = -1
+        selectedItem = -1
         information.activateInfo(true)
         UIView.animateWithDuration(0.3) { () -> Void in
             let sizeBtn:CGSize = CGSize(width: ((CGFloat(self.dataset.count+1)*self.spacing)+(self.size*CGFloat(self.dataset.count))), height: self.size+(2*self.spacing))
@@ -230,7 +230,7 @@ public class JOEmojiableBtn: UIView {
     
     func selectIndex(index:Int){
         if index >= 0 && index < dataset.count{
-            selected = index
+            selectedItem = index
             information.activateInfo(false)
             UIView.animateWithDuration(0.3) { () -> Void in
                 let sizeBtn:CGSize = CGSize(width: ((CGFloat(self.dataset.count-1)*self.spacing)+(self.minSize*CGFloat(self.dataset.count-1))+self.maxSize), height: self.minSize+(2*self.spacing))
@@ -282,7 +282,7 @@ public class JOEmojiableBtn: UIView {
     
     public func endTouch(point:CGPoint){
         if (point.x > 0 && point.x < options.frame.maxX){
-                self.deActivate(selected)
+                self.deActivate(selectedItem)
         }else{
             self.deActivate(-1)
         }

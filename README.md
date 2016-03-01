@@ -1,6 +1,5 @@
 # JOEmojiableBtn
 
-[![CI Status](http://img.shields.io/travis/lojals/JOEmojiableBtn.svg?style=flat)](https://travis-ci.org/lojals/JOEmojiableBtn)
 [![Version](https://img.shields.io/cocoapods/v/JOEmojiableBtn.svg?style=flat)](http://cocoapods.org/pods/JOEmojiableBtn)
 [![License](https://img.shields.io/cocoapods/l/JOEmojiableBtn.svg?style=flat)](http://cocoapods.org/pods/JOEmojiableBtn)
 [![Platform](https://img.shields.io/cocoapods/p/JOEmojiableBtn.svg?style=flat)](http://cocoapods.org/pods/JOEmojiableBtn)

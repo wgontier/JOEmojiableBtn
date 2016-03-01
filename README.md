@@ -9,11 +9,29 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+You can custom your selector with the following variables, used in the 
 
-![image](http://imgur.com/e4zaaye)
+![image](http://i.imgur.com/e4zaaye.png)
 
 
-![image](http://imgur.com/yNfyP3c)
+![image](http://i.imgur.com/yNfyP3c.png)
+
+
+## Installation
+
+JOEmojiableBtn is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "JOEmojiableBtn"
+```
+
+
+## Examples
+
+![image](http://i.imgur.com/A6Z1oTI.gif)
+
+### Example Code
 
 ```swift
 let btn             = JOEmojiableBtn(frame: CGRectMake(40,200,50,50))
@@ -31,19 +49,35 @@ self.view.addSubview(btn)
 ```
 
 
+![image](http://i.imgur.com/G6PmoDE.gif)
 
+### Example Code
 
-
-## Requirements
-
-## Installation
-
-JOEmojiableBtn is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "JOEmojiableBtn"
+```swift
+let config              = JOEmojiableConfig(spacing: 2, size: 30, minSize: 34, maxSize: 45, s_options_selector: 30)
+        let btn2                = JOEmojiableBtn(frame: CGRectMake(40,300,50,50), config: config)
+        btn2.delegate           = self
+        btn2.backgroundColor    = UIColor(red:0.27, green:0.69, blue:0.67, alpha:1)
+        btn2.layer.cornerRadius = 25
+        btn2.dataset            = [
+            JOEmojiableOption(image: "img_1", name: "dislike"),
+            JOEmojiableOption(image: "img_2", name: "broken"),
+            JOEmojiableOption(image: "img_3", name: "he he"),
+            JOEmojiableOption(image: "img_4", name: "ooh"),
+            JOEmojiableOption(image: "img_5", name: "meh!"),
+            JOEmojiableOption(image: "img_6", name: "ahh!"),
+            JOEmojiableOption(image: "img_4", name: "ooh")
+        ]
+        self.view.addSubview(btn2)
 ```
+
+
+
+
+## To Do
+* Create different layouts, inferior, left, depending on the superview position.
+* Add Option labels.
+
 
 ## Author
 

@@ -8,6 +8,11 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+There's also an [Objective-C implementation](https://github.com/Eke/EMEmojiableBtn) developed by [Eke](https://github.com/Eke).
+
+### 🎉🍕🤘📱🤓
+
+ ---
 
 ## Installation
 

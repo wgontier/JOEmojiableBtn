@@ -117,7 +117,7 @@ public class JOEmojiableBtn: UIButton {
     }
     
     func singleTapEvent(){
-        delegate.singleTap(sender: self)
+        activate()
     }
     
     /**

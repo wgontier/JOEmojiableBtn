@@ -1,12 +1,10 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'JOEmojiableBtn_Example', :exclusive => true do
+target 'JOEmojiableBtn_Example' do
   pod 'JOEmojiableBtn', :path => '../'
 end
 
-target 'JOEmojiableBtn_Tests', :exclusive => true do
+target 'JOEmojiableBtn_Tests' do
   pod 'JOEmojiableBtn', :path => '../'
-
-  pod 'FBSnapshotTestCase'
 end

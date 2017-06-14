@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3066DFA4227F1AB5156713DF /* Pods_JOEmojiableBtn_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F514F9282FD005FBF9C4E /* Pods_JOEmojiableBtn_Tests.framework */; };
-		5FEF57ED40547866576108DA /* Pods_JOEmojiableBtn_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207F674CF7EB93B071470FD2 /* Pods_JOEmojiableBtn_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		6CDA14413D15FF293F32AE0A /* Pods_JOEmojiableBtn_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E55CD4A2FDEA989D65319 /* Pods_JOEmojiableBtn_Tests.framework */; };
 		7A23AE561C8551F0003A8694 /* img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A23AE441C8551F0003A8694 /* img_1.png */; };
 		7A23AE571C8551F0003A8694 /* img_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A23AE451C8551F0003A8694 /* img_1@2x.png */; };
 		7A23AE581C8551F0003A8694 /* img_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A23AE461C8551F0003A8694 /* img_1@3x.png */; };
@@ -33,6 +32,7 @@
 		7A23AE651C8551F0003A8694 /* img_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A23AE531C8551F0003A8694 /* img_6.png */; };
 		7A23AE661C8551F0003A8694 /* img_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A23AE541C8551F0003A8694 /* img_6@2x.png */; };
 		7A23AE671C8551F0003A8694 /* img_6@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A23AE551C8551F0003A8694 /* img_6@3x.png */; };
+		A8F4813110821649BBB25B0D /* Pods_JOEmojiableBtn_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95EEA5B4A599E390747AC670 /* Pods_JOEmojiableBtn_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D4ABB559123695A6111E513 /* Pods-JOEmojiableBtn_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Example/Pods-JOEmojiableBtn_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		207F674CF7EB93B071470FD2 /* Pods_JOEmojiableBtn_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JOEmojiableBtn_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		101AE47BC6731DC179008361 /* Pods-JOEmojiableBtn_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Tests/Pods-JOEmojiableBtn_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		31AF104F61726A4824CD7D70 /* Pods-JOEmojiableBtn_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Example/Pods-JOEmojiableBtn_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		351E55CD4A2FDEA989D65319 /* Pods_JOEmojiableBtn_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JOEmojiableBtn_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BF3925EBD79D4DA4D6746E /* JOEmojiableBtn.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JOEmojiableBtn.podspec; path = ../JOEmojiableBtn.podspec; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JOEmojiableBtn_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JOEmojiableBtn_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		61D2E54C81E5775A6A4D887E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		7539A2538E4A459B56FDF46A /* Pods-JOEmojiableBtn_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Tests/Pods-JOEmojiableBtn_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7A23AE441C8551F0003A8694 /* img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_1.png; sourceTree = "<group>"; };
 		7A23AE451C8551F0003A8694 /* img_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_1@2x.png"; sourceTree = "<group>"; };
 		7A23AE461C8551F0003A8694 /* img_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_1@3x.png"; sourceTree = "<group>"; };
@@ -79,10 +79,10 @@
 		7A23AE531C8551F0003A8694 /* img_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_6.png; sourceTree = "<group>"; };
 		7A23AE541C8551F0003A8694 /* img_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_6@2x.png"; sourceTree = "<group>"; };
 		7A23AE551C8551F0003A8694 /* img_6@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_6@3x.png"; sourceTree = "<group>"; };
-		7CDFA8561D5FF52FFD4B5292 /* Pods-JOEmojiableBtn_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Tests/Pods-JOEmojiableBtn_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		896201CC5F9E13F3BEEB67AA /* Pods-JOEmojiableBtn_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Example/Pods-JOEmojiableBtn_Example.release.xcconfig"; sourceTree = "<group>"; };
+		95EEA5B4A599E390747AC670 /* Pods_JOEmojiableBtn_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JOEmojiableBtn_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C270B48A211A0387A65C0BFD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		C29F514F9282FD005FBF9C4E /* Pods_JOEmojiableBtn_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JOEmojiableBtn_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC2DB5CB3DA67B3CFF15D939 /* Pods-JOEmojiableBtn_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Example/Pods-JOEmojiableBtn_Example.release.xcconfig"; sourceTree = "<group>"; };
+		DE3D7ABAD19542C0E0B84F33 /* Pods-JOEmojiableBtn_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JOEmojiableBtn_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JOEmojiableBtn_Tests/Pods-JOEmojiableBtn_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FEF57ED40547866576108DA /* Pods_JOEmojiableBtn_Example.framework in Frameworks */,
+				A8F4813110821649BBB25B0D /* Pods_JOEmojiableBtn_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,24 +98,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3066DFA4227F1AB5156713DF /* Pods_JOEmojiableBtn_Tests.framework in Frameworks */,
+				6CDA14413D15FF293F32AE0A /* Pods_JOEmojiableBtn_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		26749EDF1874092ECD892D38 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0D4ABB559123695A6111E513 /* Pods-JOEmojiableBtn_Example.debug.xcconfig */,
-				DC2DB5CB3DA67B3CFF15D939 /* Pods-JOEmojiableBtn_Example.release.xcconfig */,
-				7CDFA8561D5FF52FFD4B5292 /* Pods-JOEmojiableBtn_Tests.debug.xcconfig */,
-				7539A2538E4A459B56FDF46A /* Pods-JOEmojiableBtn_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -123,8 +112,8 @@
 				607FACD21AFB9204008FA782 /* Example for JOEmojiableBtn */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				26749EDF1874092ECD892D38 /* Pods */,
-				DFC9F71E3C112D4E6A1F1C4C /* Frameworks */,
+				9918619326BD5D888853877F /* Pods */,
+				8271F654EE4033C22823CD90 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,13 +201,24 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		DFC9F71E3C112D4E6A1F1C4C /* Frameworks */ = {
+		8271F654EE4033C22823CD90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				207F674CF7EB93B071470FD2 /* Pods_JOEmojiableBtn_Example.framework */,
-				C29F514F9282FD005FBF9C4E /* Pods_JOEmojiableBtn_Tests.framework */,
+				95EEA5B4A599E390747AC670 /* Pods_JOEmojiableBtn_Example.framework */,
+				351E55CD4A2FDEA989D65319 /* Pods_JOEmojiableBtn_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9918619326BD5D888853877F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31AF104F61726A4824CD7D70 /* Pods-JOEmojiableBtn_Example.debug.xcconfig */,
+				896201CC5F9E13F3BEEB67AA /* Pods-JOEmojiableBtn_Example.release.xcconfig */,
+				DE3D7ABAD19542C0E0B84F33 /* Pods-JOEmojiableBtn_Tests.debug.xcconfig */,
+				101AE47BC6731DC179008361 /* Pods-JOEmojiableBtn_Tests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,12 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "JOEmojiableBtn_Example" */;
 			buildPhases = (
-				EAC1B42DF8B48C118C3A8C0E /* Check Pods Manifest.lock */,
+				D1AF8CF0DB203D8228D376D3 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				4E532AF5B5782FCC011A50AB /* Embed Pods Frameworks */,
-				D22674D43323081601462092 /* Copy Pods Resources */,
+				4568B51128740B1D8BF20E24 /* [CP] Embed Pods Frameworks */,
+				F5433E53E067E513669AC04F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -248,12 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "JOEmojiableBtn_Tests" */;
 			buildPhases = (
-				1AD2ABC6538889E949A8090C /* Check Pods Manifest.lock */,
+				724B5750F860396815138A6E /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				067F8AAF9CBA393DCC949E96 /* Embed Pods Frameworks */,
-				A29DB827C33430586D14B4C1 /* Copy Pods Resources */,
+				9816FBD79E67711BE6C728D9 /* [CP] Embed Pods Frameworks */,
+				024337FCDA860BB4AF538234 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,9 +277,11 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0830;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -342,59 +344,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		067F8AAF9CBA393DCC949E96 /* Embed Pods Frameworks */ = {
+		024337FCDA860BB4AF538234 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JOEmojiableBtn_Tests/Pods-JOEmojiableBtn_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1AD2ABC6538889E949A8090C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		4E532AF5B5782FCC011A50AB /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JOEmojiableBtn_Example/Pods-JOEmojiableBtn_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A29DB827C33430586D14B4C1 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,34 +359,79 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JOEmojiableBtn_Tests/Pods-JOEmojiableBtn_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D22674D43323081601462092 /* Copy Pods Resources */ = {
+		4568B51128740B1D8BF20E24 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JOEmojiableBtn_Example/Pods-JOEmojiableBtn_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		724B5750F860396815138A6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9816FBD79E67711BE6C728D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JOEmojiableBtn_Tests/Pods-JOEmojiableBtn_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1AF8CF0DB203D8228D376D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F5433E53E067E513669AC04F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JOEmojiableBtn_Example/Pods-JOEmojiableBtn_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EAC1B42DF8B48C118C3A8C0E /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -566,7 +568,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D4ABB559123695A6111E513 /* Pods-JOEmojiableBtn_Example.debug.xcconfig */;
+			baseConfigurationReference = 31AF104F61726A4824CD7D70 /* Pods-JOEmojiableBtn_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JOEmojiableBtn/Info.plist;
@@ -574,12 +576,13 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC2DB5CB3DA67B3CFF15D939 /* Pods-JOEmojiableBtn_Example.release.xcconfig */;
+			baseConfigurationReference = 896201CC5F9E13F3BEEB67AA /* Pods-JOEmojiableBtn_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JOEmojiableBtn/Info.plist;
@@ -587,12 +590,13 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CDFA8561D5FF52FFD4B5292 /* Pods-JOEmojiableBtn_Tests.debug.xcconfig */;
+			baseConfigurationReference = DE3D7ABAD19542C0E0B84F33 /* Pods-JOEmojiableBtn_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -607,13 +611,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JOEmojiableBtn_Example.app/JOEmojiableBtn_Example";
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7539A2538E4A459B56FDF46A /* Pods-JOEmojiableBtn_Tests.release.xcconfig */;
+			baseConfigurationReference = 101AE47BC6731DC179008361 /* Pods-JOEmojiableBtn_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -624,6 +629,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JOEmojiableBtn_Example.app/JOEmojiableBtn_Example";
 			};
 			name = Release;

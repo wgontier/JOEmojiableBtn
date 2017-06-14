@@ -16,25 +16,25 @@ class ViewController: UIViewController,JOEmojiableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let label           = UILabel(frame: CGRectMake(0,30,self.view.frame.width,30))
+        let label           = UILabel(frame: CGRect(x: 0,y: 30,width: self.view.frame.width,height: 30))
         label.text          = "Long tap in the buttons"
-        label.textColor     = UIColor.lightGrayColor()
-        label.textAlignment = .Center
+        label.textColor     = UIColor.lightGray
+        label.textAlignment = .center
         self.view.addSubview(label)
         
-        labelInfo           = UILabel(frame: CGRectMake(0,60,self.view.frame.width,30))
+        labelInfo           = UILabel(frame: CGRect(x: 0,y: 60,width: self.view.frame.width,height: 30))
         labelInfo.text          = ""
         labelInfo.textColor     = UIColor(red:0.27, green:0.69, blue:0.67, alpha:1)
-        labelInfo.textAlignment = .Center
+        labelInfo.textAlignment = .center
         self.view.addSubview(labelInfo)
         
         
-        let btn                = JOEmojiableBtn(frame: CGRectMake(40,200,100,50))
+        let btn                = JOEmojiableBtn(frame: CGRect(x: 40,y: 200,width: 100,height: 50))
         btn.delegate           = self
-        btn.titleLabel?.font   = UIFont.systemFontOfSize(11)
+        btn.titleLabel?.font   = UIFont.systemFont(ofSize: 11)
         btn.backgroundColor    = UIColor(red:0.27, green:0.69, blue:0.67, alpha:1)
         btn.layer.cornerRadius = 25
-        btn.setTitle("Long-tap me!", forState: .Normal)
+//        btn.setTitle("Long-tap me!", for: .Normal)
         btn.dataset            = [
             JOEmojiableOption(image: "img_1", name: "dislike"),
             JOEmojiableOption(image: "img_2", name: "broken"),
@@ -47,12 +47,12 @@ class ViewController: UIViewController,JOEmojiableDelegate {
         
 
         let config              = JOEmojiableConfig(spacing: 2, size: 30, minSize: 34, maxSize: 45, s_options_selector: 30)
-        let btn2                = JOEmojiableBtn(frame: CGRectMake(40,300,100,50), config: config)
+        let btn2                = JOEmojiableBtn(frame: CGRect(x: 40,y: 300,width: 100,height: 50), config: config)
         btn2.delegate           = self
         btn2.backgroundColor    = UIColor(red:0.27, green:0.69, blue:0.67, alpha:1)
         btn2.layer.cornerRadius = 25
-        btn2.titleLabel?.font   = UIFont.systemFontOfSize(11)
-        btn2.setTitle("Long-tap me!", forState: .Normal)
+        btn2.titleLabel?.font   = UIFont.systemFont(ofSize: 11)
+//        btn2.setTitle("Long-tap me!", for: .Normal)
         btn2.dataset            = [
             JOEmojiableOption(image: "img_1", name: "dislike"),
             JOEmojiableOption(image: "img_2", name: "broken"),
@@ -67,17 +67,17 @@ class ViewController: UIViewController,JOEmojiableDelegate {
         
     }
     
-    func singleTap(sender: JOEmojiableBtn) {
+    func singleTap(_ sender: JOEmojiableBtn) {
         print("Single tap action")
         labelInfo.text = "Single tap action"
     }
     
-    func selectedOption(sender: JOEmojiableBtn, index: Int) {
+    func selectedOption(_ sender: JOEmojiableBtn, index: Int) {
         print("Option \(index) selected")
         labelInfo.text = "Option \(index) selected"
     }
     
-    func canceledAction(sender: JOEmojiableBtn) {
+    func canceledAction(_ sender: JOEmojiableBtn) {
         print("User cancelled selection")
         labelInfo.text = "User cancelled selection"
     }

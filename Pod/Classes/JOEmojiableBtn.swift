@@ -41,14 +41,14 @@ public struct JOEmojiableOption{
 }
 
 public protocol JOEmojiableDelegate{
-    func selectedOption(sender:JOEmojiableBtn,index:Int)
-    func singleTap(sender:JOEmojiableBtn)
-    func canceledAction(sender:JOEmojiableBtn)
+    func selectedOption(_ sender:JOEmojiableBtn,index:Int)
+    func singleTap(_ sender:JOEmojiableBtn)
+    func canceledAction(_ sender:JOEmojiableBtn)
 }
 
-public class JOEmojiableBtn: UIButton {
-    public var delegate:JOEmojiableDelegate!
-    public var dataset:[JOEmojiableOption]!
+open class JOEmojiableBtn: UIButton {
+    open var delegate:JOEmojiableDelegate!
+    open var dataset:[JOEmojiableOption]!
     
     var longTap:UILongPressGestureRecognizer!
     var singleTap:UITapGestureRecognizer!
@@ -103,9 +103,9 @@ public class JOEmojiableBtn: UIButton {
     }
     
     
-    private func initialize(){
-        longTap = UILongPressGestureRecognizer(target: self, action: Selector("longTapEvent"))
-        singleTap = UITapGestureRecognizer(target: self, action: Selector("singleTapEvent"))
+    fileprivate func initialize(){
+        longTap = UILongPressGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.longTapEvent))
+        singleTap = UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.singleTapEvent))
         self.addGestureRecognizer(longTap)
         self.addGestureRecognizer(singleTap)
         self.layer.masksToBounds = false
@@ -123,7 +123,7 @@ public class JOEmojiableBtn: UIButton {
     /**
      Function that open the Options Selector
      */
-    private func activate(){
+    fileprivate func activate(){
         if !active {
             if dataset != nil {
                 let frameSV = UIScreen.main.bounds
@@ -185,7 +185,7 @@ public class JOEmojiableBtn: UIButton {
     /**
      Function that close the Options Selector
      */
-    fileprivate func deActivate(optionIdx:Int){
+    fileprivate func deActivate(_ optionIdx:Int){
         for (i,option) in self.options.subviews.enumerated(){
             UIView.animate(withDuration: 0.2, delay: 0.05*Double(i), options: UIViewAnimationOptions.curveEaseInOut, animations: { () -> Void in
                 self.information.alpha = 0
@@ -205,9 +205,9 @@ public class JOEmojiableBtn: UIButton {
                         self.active = false
                         self.bgClear.removeFromSuperview()
                         if (optionIdx < 0){
-                            self.delegate.canceledAction(sender: self)
+                            self.delegate.canceledAction(self)
                         }else{
-                            self.delegate.selectedOption(sender: self, index: self.selectedItem)
+                            self.delegate.selectedOption(self, index: self.selectedItem)
                         }
                     })
                 }
@@ -217,7 +217,7 @@ public class JOEmojiableBtn: UIButton {
     
     fileprivate func loseFocus(){
         selectedItem = -1
-        information.activateInfo(active: true)
+        information.activateInfo(true)
         UIView.animate(withDuration: 0.3) { () -> Void in
             let sizeBtn:CGSize = CGSize(width: ((CGFloat(self.dataset.count+1)*self.spacing)+(self.size*CGFloat(self.dataset.count))), height: self.size+(2*self.spacing))
             self.options.frame = CGRect(x: self.origin.x, y: self.origin.y - (self.s_options_selector+sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height)
@@ -228,10 +228,10 @@ public class JOEmojiableBtn: UIButton {
         }
     }
     
-    func selectIndex(index:Int){
+    func selectIndex(_ index:Int){
         if index >= 0 && index < dataset.count{
             selectedItem = index
-            information.activateInfo(active: false)
+            information.activateInfo(false)
             UIView.animate(withDuration: 0.3) { () -> Void in
                 let sizeBtn:CGSize = CGSize(width: ((CGFloat(self.dataset.count-1)*self.spacing)+(self.minSize*CGFloat(self.dataset.count-1))+self.maxSize), height: self.minSize+(2*self.spacing))
                 self.options.frame = CGRect(x: self.origin.x, y: self.origin.y - (self.s_options_selector+sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height)
@@ -267,31 +267,31 @@ extension JOEmojiableBtn:SelectorViewDelegate {
      
      - parameter point: user's touch point
      */
-    public func movedTo(point:CGPoint){
+    public func movedTo(_ point:CGPoint){
         let t = options.frame.width/CGFloat(dataset.count)
         if (point.y < (options.frame.minY - 50) || point.y > (information.frame.maxY + 30)){
             loseFocus()
         }else{
             if (point.x-origin.x > 0 && point.x < options.frame.maxX){
-                selectIndex(index: Int(round((point.x-origin.x)/t)))
+                selectIndex(Int(round((point.x-origin.x)/t)))
             }else{
                 loseFocus()
             }
         }
     }
     
-    public func endTouch(point:CGPoint){
+    public func endTouch(_ point:CGPoint){
         if (point.x > 0 && point.x < options.frame.maxX){
-            self.deActivate(optionIdx: selectedItem)
+            self.deActivate(selectedItem)
         }else{
-            self.deActivate(optionIdx: -1)
+            self.deActivate(-1)
         }
     }
 }
 
-public class InformationView :UIView{
-    private var textInformation:UILabel!
-    public override func draw(_ rect: CGRect) {
+open class InformationView :UIView{
+    fileprivate var textInformation:UILabel!
+    open override func draw(_ rect: CGRect) {
         let dots = UIBezierPath()
         dots.move(to: CGPoint(x: 18.5, y: (rect.height/2)))
         dots.addLine(to: CGPoint(x: rect.width, y: (rect.height/2)))
@@ -326,7 +326,7 @@ public class InformationView :UIView{
         self.addSubview(textInformation)
     }
     
-    func activateInfo(active:Bool){
+    func activateInfo(_ active:Bool){
         textInformation.alpha = active ? 1 : 0
     }
 }

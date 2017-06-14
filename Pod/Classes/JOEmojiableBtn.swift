@@ -133,8 +133,6 @@ open class JOEmojiableBtn: UIButton {
                 bgClear.delegate = self
                 bgClear.backgroundColor = UIColor.clear
                 
-                UIApplication.shared
-                
                 origin = self.superview?.convert(self.frame.origin, to: nil)
                 
                 if origin != self.frame.origin {

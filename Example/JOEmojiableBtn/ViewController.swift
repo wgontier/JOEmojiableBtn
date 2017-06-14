@@ -34,7 +34,7 @@ class ViewController: UIViewController,JOEmojiableDelegate {
         btn.titleLabel?.font   = UIFont.systemFont(ofSize: 11)
         btn.backgroundColor    = UIColor(red:0.27, green:0.69, blue:0.67, alpha:1)
         btn.layer.cornerRadius = 25
-//        btn.setTitle("Long-tap me!", for: .Normal)
+        btn.setTitle("Long-tap me!", for: [.normal])
         btn.dataset            = [
             JOEmojiableOption(image: "img_1", name: "dislike"),
             JOEmojiableOption(image: "img_2", name: "broken"),
@@ -52,7 +52,7 @@ class ViewController: UIViewController,JOEmojiableDelegate {
         btn2.backgroundColor    = UIColor(red:0.27, green:0.69, blue:0.67, alpha:1)
         btn2.layer.cornerRadius = 25
         btn2.titleLabel?.font   = UIFont.systemFont(ofSize: 11)
-//        btn2.setTitle("Long-tap me!", for: .Normal)
+        btn2.setTitle("Long-tap me!", for: [.normal])
         btn2.dataset            = [
             JOEmojiableOption(image: "img_1", name: "dislike"),
             JOEmojiableOption(image: "img_2", name: "broken"),

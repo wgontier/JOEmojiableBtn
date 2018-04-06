@@ -14,12 +14,12 @@ public protocol SelectorViewDelegate: class {
 }
 
 open class SelectorView: UIView {
-    weak var delegate:SelectorViewDelegate?
-    
+    weak var delegate: SelectorViewDelegate?
+
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.movedTo((touches.first?.location(in: self))!)
     }
-    
+
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.endTouch((touches.first?.location(in: self))!)
     }

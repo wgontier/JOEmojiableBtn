@@ -17,7 +17,7 @@ public struct JOEmojiableConfig {
     var minSize: CGFloat
     var maxSize: CGFloat
     var s_options_selector: CGFloat
-    
+
     public init(spacing: CGFloat, size: CGFloat, minSize: CGFloat, maxSize: CGFloat, s_options_selector: CGFloat) {
         self.spacing  = spacing
         self.size = size
@@ -33,7 +33,7 @@ public struct JOEmojiableConfig {
 public struct JOEmojiableOption {
     var image: String
     var name: String
-    
+
     public init(image: String, name: String) {
         self.image = image
         self.name  = name
@@ -49,32 +49,32 @@ public protocol JOEmojiableDelegate: class {
 open class JOEmojiableBtn: UIButton {
     open weak var delegate: JOEmojiableDelegate!
     open var dataset: [JOEmojiableOption]!
-    
+
     var longTap: UILongPressGestureRecognizer!
     var singleTap: UITapGestureRecognizer!
     var drag: UIPanGestureRecognizer!
-    
+
     var active: Bool!
     var selectedItem: Int!
     var bgClear: SelectorView!
     var options: UIView!
     var origin: CGPoint!
-    
+
     var information: InformationView!
-    
+
     let spacing: CGFloat
     let size: CGFloat
     let minSize: CGFloat
     let maxSize: CGFloat
     let s_options_selector: CGFloat
-    
+
     /**
      Initialization with parameters as default (Facebook reactions iOS App)
      
      - parameter frame: Frame of the button will open the selector
      
      */
-    
+
     public override init(frame: CGRect) {
         self.spacing  = 6
         self.size = 40
@@ -84,14 +84,14 @@ open class JOEmojiableBtn: UIButton {
         super.init(frame: frame)
         self.initialize()
     }
-    
+
     /**
      Initialization with Custom sizes check Documentation Github project
      
      - parameter frame: Frame of the button will open the selector
      - parameter config: JOEmojiableConfig value with custom sizes
      */
-    
+
     public init(frame: CGRect, config: JOEmojiableConfig) {
         self.spacing = config.spacing
         self.size = config.size
@@ -101,7 +101,7 @@ open class JOEmojiableBtn: UIButton {
         super.init(frame: frame)
         self.initialize()
     }
-    
+
     fileprivate func initialize() {
         longTap = UILongPressGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.longTapEvent))
         singleTap = UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.singleTapEvent))
@@ -110,15 +110,15 @@ open class JOEmojiableBtn: UIButton {
         self.layer.masksToBounds = false
         active = false
     }
-    
+
     func longTapEvent() {
         activate()
     }
-    
+
     func singleTapEvent() {
         activate()
     }
-    
+
     /**
      Function that open the Options Selector
      */
@@ -131,16 +131,16 @@ open class JOEmojiableBtn: UIButton {
                 bgClear = SelectorView(frame: frameSV)
                 bgClear.delegate = self
                 bgClear.backgroundColor = UIColor.clear
-                
+
                 origin = self.superview?.convert(self.frame.origin, to: nil)
-                
+
                 if origin != self.frame.origin {
                     bgClear.frame.origin.x -= origin.x
                     bgClear.frame.origin.y -= origin.y
                 }
-                
+
                 self.superview?.addSubview(bgClear)
-                
+
                 let sizeBtn = CGSize(width: ((CGFloat(dataset.count + 1) * spacing) + (size * CGFloat(dataset.count))), height: size + (2 * spacing))
                 options = UIView(frame: CGRect(x: origin.x, y: origin.y - (sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height))
                 options.layer.cornerRadius  = options.frame.height/2
@@ -150,12 +150,12 @@ open class JOEmojiableBtn: UIButton {
                 options.layer.shadowOpacity = 0.5
                 options.alpha               = 0.3
                 bgClear.addSubview(options)
-                
+
                 UIView.animate(withDuration: 0.2, animations: { () -> Void in
                     self.options.frame.origin.y = self.origin.y - (self.s_options_selector + sizeBtn.height)
                     self.options.alpha          = 1
                 })
-                
+
                 for i in 0..<dataset.count {
                     let option = UIImageView(frame: CGRect(x: (CGFloat(i+1)*spacing)+(size*CGFloat(i)), y: sizeBtn.height*1.2, width: 10, height: 10))
                     option.image = UIImage(named: dataset[i].image)
@@ -168,17 +168,16 @@ open class JOEmojiableBtn: UIButton {
                         option.center = CGPoint(x: (CGFloat(i + 1) * self.spacing) + (self.size * CGFloat(i)) + self.size / 2, y: self.spacing + self.size / 2)
                     }, completion: nil)
                 }
-                
+
                 information = InformationView(frame: CGRect(x: 0, y: origin.y, width: frameSV.width, height: self.frame.height))
                 information.backgroundColor = UIColor.white
                 bgClear.addSubview(information)
-            }
-            else {
+            } else {
                 print("Please, initialize the dataset.")
             }
         }
     }
-    
+
     /**
      Function that close the Options Selector
      */
@@ -211,7 +210,7 @@ open class JOEmojiableBtn: UIButton {
             })
         }
     }
-    
+
     fileprivate func loseFocus() {
         selectedItem = -1
         information.activateInfo(true)
@@ -219,12 +218,12 @@ open class JOEmojiableBtn: UIButton {
             let sizeBtn = CGSize(width: ((CGFloat(self.dataset.count + 1) * self.spacing) + (self.size * CGFloat(self.dataset.count))), height: self.size + (2 * self.spacing))
             self.options.frame = CGRect(x: self.origin.x, y: self.origin.y - (self.s_options_selector+sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height)
             self.options.layer.cornerRadius = sizeBtn.height / 2
-            for (idx,view) in self.options.subviews.enumerated() {
+            for (idx, view) in self.options.subviews.enumerated() {
                 view.frame = CGRect(x: (CGFloat(idx + 1) * self.spacing) + (self.size*CGFloat(idx)), y: self.spacing, width: self.size, height: self.size)
             }
         }
     }
-    
+
     func selectIndex(_ index: Int) {
         if index >= 0 && index < dataset.count {
             selectedItem = index
@@ -253,7 +252,7 @@ open class JOEmojiableBtn: UIButton {
             }
         }
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -277,7 +276,7 @@ extension JOEmojiableBtn:SelectorViewDelegate {
             }
         }
     }
-    
+
     public func endTouch(_ point: CGPoint) {
         if point.x > 0 && point.x < options.frame.maxX {
             self.deActivate(selectedItem)
@@ -299,21 +298,21 @@ open class InformationView: UIView {
         let dashes: [CGFloat] = [dots.lineWidth * 0, 37]
         dots.setLineDash(dashes, count: dashes.count, phase: 0)
         dots.stroke()
-        
+
         let lineSuperior = UIBezierPath()
         lineSuperior.move(to: CGPoint(x: 0, y: 0))
         lineSuperior.addLine(to: CGPoint(x: rect.width, y: 0))
         UIColor(red: 0.8, green: 0.81, blue: 0.82, alpha: 1).setStroke()
         lineSuperior.lineWidth = 1
         lineSuperior.stroke()
-        
+
         let lineInferior = UIBezierPath()
         lineInferior.move(to: CGPoint(x: 0, y: rect.height))
         lineInferior.addLine(to: CGPoint(x: rect.width, y: rect.height))
         UIColor(red:0.8, green:0.81, blue:0.82, alpha:1).setStroke()
         lineInferior.lineWidth = 1
         lineInferior.stroke()
-        
+
         textInformation = UILabel(frame: CGRect(x: 0, y: 1, width: rect.width, height: rect.height-2))
         textInformation.backgroundColor = UIColor.white
         textInformation.textColor = UIColor(red: 0.57, green: 0.59, blue: 0.64, alpha: 1)
@@ -323,7 +322,7 @@ open class InformationView: UIView {
         textInformation.alpha = 0
         self.addSubview(textInformation)
     }
-    
+
     func activateInfo(_ active: Bool) {
         textInformation.alpha = active ? 1 : 0
     }

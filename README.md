@@ -34,7 +34,7 @@ This instance create a **JOEmojiableBtn** with the ~~Reactions Style~~.
 ```swift
 let btn             = JOEmojiableBtn(frame: CGRectMake(40,200,50,50))
 btn.delegate        = self
-btn.backgroundColor = UIColor.greenColor()
+btn.backgroundColor = .green
 btn.dataset         = [
     JOEmojiableOption(image: "img_1", name: "dislike"),
     JOEmojiableOption(image: "img_2", name: "broken"),

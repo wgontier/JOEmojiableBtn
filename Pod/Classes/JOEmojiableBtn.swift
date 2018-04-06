@@ -28,9 +28,13 @@ open class JOEmojiableBtn: UIButton {
     open weak var delegate: JOEmojiableDelegate!
     open var dataset: [JOEmojiableOption]!
 
-    var longTap: UILongPressGestureRecognizer!
-    var singleTap: UITapGestureRecognizer!
-    var drag: UIPanGestureRecognizer!
+    private lazy var longTap: UILongPressGestureRecognizer = {
+        return UILongPressGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.longTapEvent))
+    }()
+    
+    private lazy var singleTap: UITapGestureRecognizer = {
+        return UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.singleTapEvent))
+    }()
 
     var active: Bool!
     var selectedItem: Int!
@@ -40,11 +44,7 @@ open class JOEmojiableBtn: UIButton {
 
     var information: InformationView!
 
-    let spacing: CGFloat
-    let size: CGFloat
-    let minSize: CGFloat
-    let maxSize: CGFloat
-    let s_options_selector: CGFloat
+    let config: JOEmojiableConfig
 
     /**
      Initialization with Custom sizes check Documentation Github project
@@ -54,15 +54,11 @@ open class JOEmojiableBtn: UIButton {
      */
 
     public init(frame: CGRect, config: JOEmojiableConfig = .default) {
-        self.spacing = config.spacing
-        self.size = config.size
-        self.minSize = config.minSize
-        self.maxSize = config.maxSize
-        self.s_options_selector = config.s_options_selector
+        self.config = config
         super.init(frame: frame)
         
-        longTap = UILongPressGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.longTapEvent))
-        singleTap = UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.singleTapEvent))
+        
+        
         addGestureRecognizer(longTap)
         addGestureRecognizer(singleTap)
         layer.masksToBounds = false
@@ -99,7 +95,7 @@ open class JOEmojiableBtn: UIButton {
 
                 self.superview?.addSubview(bgClear)
 
-                let sizeBtn = CGSize(width: ((CGFloat(dataset.count + 1) * spacing) + (size * CGFloat(dataset.count))), height: size + (2 * spacing))
+                let sizeBtn = CGSize(width: ((CGFloat(dataset.count + 1) * config.spacing) + (config.size * CGFloat(dataset.count))), height: config.size + (2 * config.spacing))
                 options = UIView(frame: CGRect(x: origin.x, y: origin.y - (sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height))
                 options.layer.cornerRadius  = options.frame.height/2
                 options.backgroundColor     = .white
@@ -110,20 +106,20 @@ open class JOEmojiableBtn: UIButton {
                 bgClear.addSubview(options)
 
                 UIView.animate(withDuration: 0.2, animations: { () -> Void in
-                    self.options.frame.origin.y = self.origin.y - (self.s_options_selector + sizeBtn.height)
-                    self.options.alpha          = 1
+                    self.options.frame.origin.y = self.origin.y - (self.config.s_options_selector + sizeBtn.height)
+                    self.options.alpha = 1
                 })
 
                 for i in 0..<dataset.count {
-                    let option = UIImageView(frame: CGRect(x: (CGFloat(i + 1) * spacing) + (size * CGFloat(i)), y: sizeBtn.height * 1.2, width: 10, height: 10))
+                    let option = UIImageView(frame: CGRect(x: (CGFloat(i + 1) * config.spacing) + (config.size * CGFloat(i)), y: sizeBtn.height * 1.2, width: 10, height: 10))
                     option.image = UIImage(named: dataset[i].image)
                     option.alpha = 0.6
                     options.addSubview(option)
-                    UIView.animate(withDuration: 0.2, delay: 0.05*Double(i), options: .curveEaseInOut, animations: { () -> Void in
-                        option.frame.origin.y = self.spacing
+                    UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: .curveEaseInOut, animations: { () -> Void in
+                        option.frame.origin.y = self.config.spacing
                         option.alpha = 1
-                        option.frame.size = CGSize(width: self.size, height: self.size)
-                        option.center = CGPoint(x: (CGFloat(i + 1) * self.spacing) + (self.size * CGFloat(i)) + self.size / 2, y: self.spacing + self.size / 2)
+                        option.frame.size = CGSize(width: self.config.size, height: self.config.size)
+                        option.center = CGPoint(x: (CGFloat(i + 1) * self.config.spacing) + (self.config.size * CGFloat(i)) + self.config.size / 2, y: self.config.spacing + self.config.size / 2)
                     }, completion: nil)
                 }
 
@@ -141,20 +137,20 @@ open class JOEmojiableBtn: UIButton {
      */
     fileprivate func deActivate(_ optionIdx: Int) {
         for (i, option) in self.options.subviews.enumerated() {
-            UIView.animate(withDuration: 0.2, delay: 0.05*Double(i), options: UIViewAnimationOptions.curveEaseInOut, animations: { () -> Void in
+            UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: UIViewAnimationOptions.curveEaseInOut, animations: { () -> Void in
                 self.information.alpha = 0
-                option.alpha      = 0.3
+                option.alpha = 0.3
                 option.frame.size = CGSize(width: 10, height: 10)
                 if optionIdx == i {
-                    option.center = CGPoint(x: (CGFloat(i + 1) * self.spacing) + (self.size * CGFloat(i)) + self.size / 2, y: -self.options.frame.height + self.size / 2)
+                    option.center = CGPoint(x: (CGFloat(i + 1) * self.config.spacing) + (self.config.size * CGFloat(i)) + self.config.size / 2, y: -self.options.frame.height + self.config.size / 2)
                 } else {
-                    option.center = CGPoint(x: (CGFloat(i + 1) * self.spacing) + (self.size * CGFloat(i)) + self.size / 2, y: self.options.frame.height + self.size / 2)
+                    option.center = CGPoint(x: (CGFloat(i + 1) * self.config.spacing) + (self.config.size * CGFloat(i)) + self.config.size / 2, y: self.options.frame.height + self.config.size / 2)
                 }
             }, completion: { (finished) -> Void in
                 if finished && i == (self.dataset.count / 2) {
                     UIView.animate(withDuration: 0.1, animations: { () -> Void in
                         self.options.alpha = 0
-                        self.options.frame.origin.y = self.origin.y - (self.size + (2 * self.spacing))
+                        self.options.frame.origin.y = self.origin.y - (self.config.size + (2 * self.config.spacing))
                     }, completion: { (finished) -> Void in
                         self.active = false
                         self.bgClear.removeFromSuperview()
@@ -173,11 +169,11 @@ open class JOEmojiableBtn: UIButton {
         selectedItem = -1
         information.activateInfo(true)
         UIView.animate(withDuration: 0.3) { () -> Void in
-            let sizeBtn = CGSize(width: ((CGFloat(self.dataset.count + 1) * self.spacing) + (self.size * CGFloat(self.dataset.count))), height: self.size + (2 * self.spacing))
-            self.options.frame = CGRect(x: self.origin.x, y: self.origin.y - (self.s_options_selector + sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height)
+            let sizeBtn = CGSize(width: ((CGFloat(self.dataset.count + 1) * self.config.spacing) + (self.config.size * CGFloat(self.dataset.count))), height: self.config.size + (2 * self.config.spacing))
+            self.options.frame = CGRect(x: self.origin.x, y: self.origin.y - (self.config.s_options_selector + sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height)
             self.options.layer.cornerRadius = sizeBtn.height / 2
             for (idx, view) in self.options.subviews.enumerated() {
-                view.frame = CGRect(x: (CGFloat(idx + 1) * self.spacing) + (self.size * CGFloat(idx)), y: self.spacing, width: self.size, height: self.size)
+                view.frame = CGRect(x: (CGFloat(idx + 1) * self.config.spacing) + (self.config.size * CGFloat(idx)), y: self.config.spacing, width: self.config.size, height: self.config.size)
             }
         }
     }
@@ -188,23 +184,25 @@ open class JOEmojiableBtn: UIButton {
             information.activateInfo(false)
 
             UIView.animate(withDuration: 0.3) { () -> Void in
-                let sizeBtn = CGSize(width: ((CGFloat(self.dataset.count - 1) * self.spacing) + (self.minSize * CGFloat(self.dataset.count - 1)) + self.maxSize), height: self.minSize + (2 * self.spacing))
-                self.options.frame = CGRect(x: self.origin.x, y: self.origin.y - (self.s_options_selector+sizeBtn.height), width: sizeBtn.width, height: sizeBtn.height)
+                let sizeBtn = CGSize(width: ((CGFloat(self.dataset.count - 1) * self.config.spacing) + (self.config.minSize * CGFloat(self.dataset.count - 1)) + self.config.maxSize), height: self.config.minSize + (2 * self.config.spacing))
+                self.options.frame = CGRect(origin: CGPoint(x: self.origin.x,
+                                                            y: self.origin.y - (self.config.s_options_selector + sizeBtn.height)),
+                                            size: sizeBtn)
                 self.options.layer.cornerRadius = sizeBtn.height / 2
-                var last: CGFloat = index != 0 ? self.spacing : 0
+                var last: CGFloat = index != 0 ? self.config.spacing : 0
                 for (idx, view) in self.options.subviews.enumerated() {
                     switch idx {
                     case (index-1):
-                        view.frame = CGRect(x: last, y: self.spacing, width: self.minSize, height: self.minSize)
-                        view.center.y = (self.minSize / 2) + self.spacing
-                        last += self.minSize
+                        view.frame = CGRect(x: last, y: self.config.spacing, width: self.config.minSize, height: self.config.minSize)
+                        view.center.y = (self.config.minSize / 2) + self.config.spacing
+                        last += self.config.minSize
                     case (index):
-                        view.frame = CGRect(x: last, y: -(self.maxSize / 2), width: self.maxSize, height: self.maxSize)
-                        last += self.maxSize
+                        view.frame = CGRect(x: last, y: -(self.config.maxSize / 2), width: self.config.maxSize, height: self.config.maxSize)
+                        last += self.config.maxSize
                     default:
-                        view.frame = CGRect(x: last, y: self.spacing, width: self.minSize, height: self.minSize)
-                        view.center.y = (self.minSize / 2) + self.spacing
-                        last += self.minSize + self.spacing
+                        view.frame = CGRect(x: last, y: self.config.spacing, width: self.config.minSize, height: self.config.minSize)
+                        view.center.y = (self.config.minSize / 2) + self.config.spacing
+                        last += self.config.minSize + self.config.spacing
                     }
                 }
             }

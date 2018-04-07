@@ -17,10 +17,12 @@ open class SelectorView: UIView {
     weak var delegate: SelectorViewDelegate?
 
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.movedTo((touches.first?.location(in: self))!)
+        guard let location = (touches.first?.location(in: self)) else { return }
+        delegate?.movedTo(location)
     }
 
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.endTouch((touches.first?.location(in: self))!)
+        guard let location = (touches.first?.location(in: self)) else { return }
+        delegate?.endTouch(location)
     }
 }

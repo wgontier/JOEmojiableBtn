@@ -19,6 +19,7 @@
 		BD143B637C5C51F8AC56CA076A14A230 /* Pods-JOEmojiableBtn_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC0D3F3ADCA819A47B71BD59959D897 /* Pods-JOEmojiableBtn_Example-dummy.m */; };
 		CCB3A5D91CF1861B21E103AC7EFD7186 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5321AA841A248D4A97FB9D15BA801A82 /* SelectorView.swift */; };
 		DD262F8DCEE151B95B7EA7788EE5CB20 /* JOEmojiableBtn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 863D204CAAB248548C977D078842B4DC /* JOEmojiableBtn.bundle */; };
+		EC13235920784A2D00ED28B3 /* JOEmojiableOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13235820784A2D00ED28B3 /* JOEmojiableOption.swift */; };
 		ECA5B203207745E6000835F3 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA5B202207745E6000835F3 /* InformationView.swift */; };
 		ECA5B2072077C9AC000835F3 /* JOEmojiableBtnConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA5B2062077C9AC000835F3 /* JOEmojiableBtnConfig.swift */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		C203221D92FD86644EA4091821C9B91F /* Pods-JOEmojiableBtn_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JOEmojiableBtn_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		DCA70C4DE120236716DB226B73B0862B /* Pods-JOEmojiableBtn_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JOEmojiableBtn_Example.modulemap"; sourceTree = "<group>"; };
 		EBC0D3F3ADCA819A47B71BD59959D897 /* Pods-JOEmojiableBtn_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JOEmojiableBtn_Example-dummy.m"; sourceTree = "<group>"; };
+		EC13235820784A2D00ED28B3 /* JOEmojiableOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JOEmojiableOption.swift; path = Pod/Classes/JOEmojiableOption.swift; sourceTree = "<group>"; };
 		ECA5B202207745E6000835F3 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InformationView.swift; path = Pod/Classes/InformationView.swift; sourceTree = "<group>"; };
 		ECA5B2062077C9AC000835F3 /* JOEmojiableBtnConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JOEmojiableBtnConfig.swift; path = Pod/Classes/JOEmojiableBtnConfig.swift; sourceTree = "<group>"; };
 		F00051A5D2A65BFAA2F547AA10427E30 /* Pods-JOEmojiableBtn_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JOEmojiableBtn_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		896737AB7F3B8B1E5E96B81BC1CB7FA1 /* JOEmojiableBtn */ = {
 			isa = PBXGroup;
 			children = (
+				EC13235820784A2D00ED28B3 /* JOEmojiableOption.swift */,
 				ECA5B2062077C9AC000835F3 /* JOEmojiableBtnConfig.swift */,
 				ECA5B202207745E6000835F3 /* InformationView.swift */,
 				76195A5439D090A14744F3C3CF69A9D9 /* JOEmojiableBtn.swift */,
@@ -432,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC13235920784A2D00ED28B3 /* JOEmojiableOption.swift in Sources */,
 				9EDEEC2CF65B7B8A1C01A1C3ACAC0394 /* JOEmojiableBtn-dummy.m in Sources */,
 				ECA5B203207745E6000835F3 /* InformationView.swift in Sources */,
 				A689E54C6AA823EB1D49ECCF1491DC51 /* JOEmojiableBtn.swift in Sources */,

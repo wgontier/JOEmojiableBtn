@@ -8,16 +8,6 @@
 
 import UIKit
 
-public struct JOEmojiableOption {
-    var image: String
-    var name: String
-
-    public init(image: String, name: String) {
-        self.image = image
-        self.name  = name
-    }
-}
-
 public protocol JOEmojiableDelegate: class {
     func selectedOption(_ sender: JOEmojiableBtn, index: Int)
     func singleTap(_ sender: JOEmojiableBtn)
@@ -25,7 +15,7 @@ public protocol JOEmojiableDelegate: class {
 }
 
 open class JOEmojiableBtn: UIButton {
-    open weak var delegate: JOEmojiableDelegate!
+    open weak var delegate: JOEmojiableDelegate?
     open var dataset: [JOEmojiableOption]!
 
     private lazy var longTap: UILongPressGestureRecognizer = {
@@ -36,11 +26,14 @@ open class JOEmojiableBtn: UIButton {
         return UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.singleTapEvent))
     }()
 
-    var active: Bool!
-    var selectedItem: Int!
+    
+    private var active: Bool!
+    public private (set) var selectedItem: Int
+    
+    
     var bgClear: SelectorView!
     var options: UIView!
-    var origin: CGPoint!
+    var origin: CGPoint
 
     var information: InformationView!
 
@@ -55,10 +48,11 @@ open class JOEmojiableBtn: UIButton {
 
     public init(frame: CGRect, config: JOEmojiableConfig = .default) {
         self.config = config
+        self.origin = .zero
+        self.selectedItem = -1
+        
         super.init(frame: frame)
-        
-        
-        
+
         addGestureRecognizer(longTap)
         addGestureRecognizer(singleTap)
         layer.masksToBounds = false
@@ -86,7 +80,7 @@ open class JOEmojiableBtn: UIButton {
                 bgClear.delegate = self
                 bgClear.backgroundColor = .clear
 
-                origin = superview?.convert(self.frame.origin, to: nil)
+                origin = superview?.convert(frame.origin, to: nil) ?? .zero
 
                 if origin != frame.origin {
                     bgClear.frame.origin.x -= origin.x
@@ -136,16 +130,15 @@ open class JOEmojiableBtn: UIButton {
      Function that close the Options Selector
      */
     fileprivate func deActivate(_ optionIdx: Int) {
-        for (i, option) in self.options.subviews.enumerated() {
+        for (i, option) in options.subviews.enumerated() {
             UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: UIViewAnimationOptions.curveEaseInOut, animations: { () -> Void in
                 self.information.alpha = 0
                 option.alpha = 0.3
                 option.frame.size = CGSize(width: 10, height: 10)
-                if optionIdx == i {
-                    option.center = CGPoint(x: (CGFloat(i + 1) * self.config.spacing) + (self.config.size * CGFloat(i)) + self.config.size / 2, y: -self.options.frame.height + self.config.size / 2)
-                } else {
-                    option.center = CGPoint(x: (CGFloat(i + 1) * self.config.spacing) + (self.config.size * CGFloat(i)) + self.config.size / 2, y: self.options.frame.height + self.config.size / 2)
-                }
+            
+                let yPosForOption: CGFloat = (optionIdx == i ? -self.options.frame.height : self.options.frame.height) + self.config.size / 2
+                
+                option.center = CGPoint(x: (CGFloat(i + 1) * self.config.spacing) + (self.config.size * CGFloat(i)) + self.config.size / 2, y: yPosForOption)
             }, completion: { (finished) -> Void in
                 if finished && i == (self.dataset.count / 2) {
                     UIView.animate(withDuration: 0.1, animations: { () -> Void in
@@ -155,9 +148,9 @@ open class JOEmojiableBtn: UIButton {
                         self.active = false
                         self.bgClear.removeFromSuperview()
                         if optionIdx < 0 {
-                            self.delegate.canceledAction(self)
+                            self.delegate?.canceledAction(self)
                         } else {
-                            self.delegate.selectedOption(self, index: self.selectedItem)
+                            self.delegate?.selectedOption(self, index: self.selectedItem)
                         }
                     })
                 }
@@ -235,9 +228,9 @@ extension JOEmojiableBtn: SelectorViewDelegate {
 
     public func endTouch(_ point: CGPoint) {
         if point.x > 0 && point.x < options.frame.maxX {
-            self.deActivate(selectedItem)
+            deActivate(selectedItem)
         } else {
-            self.deActivate(-1)
+            deActivate(-1)
         }
     }
 }

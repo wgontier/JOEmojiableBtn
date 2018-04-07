@@ -12,11 +12,31 @@ open class InformationView: UIView {
     
     private enum DesignConstants {
         static let lineColor = UIColor(red: 0.8, green: 0.81, blue: 0.82, alpha: 1)
+        static let textColor = UIColor(red: 0.57, green: 0.59, blue: 0.64, alpha: 1)
     }
     
     fileprivate var textInformation: UILabel!
     
     open override func draw(_ rect: CGRect) {
+       
+        textInformation = UILabel(frame: CGRect(origin: .zero, size: rect.size))
+        textInformation.backgroundColor = .white
+        textInformation.textColor = DesignConstants.textColor
+        textInformation.text = "Release to Cancel"
+        textInformation.textAlignment = .center
+        textInformation.font = UIFont.boldSystemFont(ofSize: 12)
+        textInformation.alpha = 0
+        addSubview(textInformation)
+        
+        func createLine(from: CGPoint, to: CGPoint) {
+            let line = UIBezierPath()
+            line.move(to: from)
+            line.addLine(to: to)
+            DesignConstants.lineColor.setStroke()
+            line.lineWidth = 1
+            line.stroke()
+        }
+        
         let dots = UIBezierPath()
         dots.move(to: CGPoint(x: 18.5, y: (rect.height / 2)))
         dots.addLine(to: CGPoint(x: rect.width, y: (rect.height/2)))
@@ -27,28 +47,9 @@ open class InformationView: UIView {
         dots.setLineDash(dashes, count: dashes.count, phase: 0)
         dots.stroke()
         
-        let lineSuperior = UIBezierPath()
-        lineSuperior.move(to: CGPoint(x: 0, y: 0))
-        lineSuperior.addLine(to: CGPoint(x: rect.width, y: 0))
-        DesignConstants.lineColor.setStroke()
-        lineSuperior.lineWidth = 1
-        lineSuperior.stroke()
+        createLine(from: .zero, to: CGPoint(x: rect.width, y: 0))
+        createLine(from: CGPoint(x: 0, y: rect.height), to: CGPoint(x: rect.width, y: rect.height))
         
-        let lineInferior = UIBezierPath()
-        lineInferior.move(to: CGPoint(x: 0, y: rect.height))
-        lineInferior.addLine(to: CGPoint(x: rect.width, y: rect.height))
-        DesignConstants.lineColor.setStroke()
-        lineInferior.lineWidth = 1
-        lineInferior.stroke()
-        
-        textInformation = UILabel(frame: CGRect(x: 0, y: 1, width: rect.width, height: rect.height-2))
-        textInformation.backgroundColor = .white
-        textInformation.textColor = UIColor(red: 0.57, green: 0.59, blue: 0.64, alpha: 1)
-        textInformation.text = "Release to Cancel"
-        textInformation.textAlignment = .center
-        textInformation.font = UIFont.boldSystemFont(ofSize: 12)
-        textInformation.alpha = 0
-        addSubview(textInformation)
     }
     
     func activateInfo(_ active: Bool) {

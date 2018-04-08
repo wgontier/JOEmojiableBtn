@@ -58,11 +58,11 @@ open class JOEmojiableBtn: UIButton {
         layer.masksToBounds = false
     }
 
-    func longTapEvent() {
+    @objc func longTapEvent() {
         activate()
     }
 
-    func singleTapEvent() {
+    @objc func singleTapEvent() {
         activate()
     }
 

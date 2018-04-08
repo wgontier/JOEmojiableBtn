@@ -3,7 +3,7 @@
 //  JOEmojiableBtn
 //
 //  Created by Jorge Raul Ovalle Zuleta on 2/28/16.
-//  Copyright © 2016 jorgeovalle. All rights reserved.
+//  Copyright © 2018 Jorge Ovalle. All rights reserved.
 //
 
 import UIKit

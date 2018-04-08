@@ -16,19 +16,19 @@ public struct JOEmojiableConfig {
     let size: CGFloat
     let minSize: CGFloat
     let maxSize: CGFloat
-    let s_options_selector: CGFloat
+    let spaceBetweenComponents: CGFloat
     
-    public init(spacing: CGFloat, size: CGFloat, minSize: CGFloat, maxSize: CGFloat, s_options_selector: CGFloat) {
+    public init(spacing: CGFloat, size: CGFloat, minSize: CGFloat, maxSize: CGFloat, spaceBetweenComponents: CGFloat) {
         self.spacing  = spacing
         self.size = size
         self.minSize = minSize
         self.maxSize = maxSize
-        self.s_options_selector = s_options_selector
+        self.spaceBetweenComponents = spaceBetweenComponents
     }
     
     public static let `default` = JOEmojiableConfig(spacing: 6,
                                                     size: 40,
                                                     minSize: 34,
                                                     maxSize: 80,
-                                                    s_options_selector: 30)
+                                                    spaceBetweenComponents: 30)
 }

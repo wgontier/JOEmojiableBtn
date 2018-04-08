@@ -19,7 +19,7 @@ open class InformationView: UIView {
     
     open override func draw(_ rect: CGRect) {
        
-        textInformation = UILabel(frame: CGRect(origin: .zero, size: rect.size))
+        textInformation = UILabel(frame: .zero)
         textInformation.backgroundColor = .white
         textInformation.textColor = DesignConstants.textColor
         textInformation.text = "Release to Cancel"
@@ -40,7 +40,7 @@ open class InformationView: UIView {
         let dots = UIBezierPath()
         dots.move(to: CGPoint(x: 18.5, y: (rect.height / 2)))
         dots.addLine(to: CGPoint(x: rect.width, y: (rect.height/2)))
-        dots.lineCapStyle = CGLineCap.round
+        dots.lineCapStyle = .round
         DesignConstants.lineColor.setStroke()
         dots.lineWidth = 3
         let dashes: [CGFloat] = [dots.lineWidth * 0, 37]
@@ -52,7 +52,7 @@ open class InformationView: UIView {
         
     }
     
-    func activateInfo(_ active: Bool) {
+    func activateInformationView(_ active: Bool) {
         textInformation.alpha = active ? 1 : 0
     }
 }

@@ -21,14 +21,13 @@ open class JOEmojiableBtn: UIButton {
     open var dataset: [JOEmojiableOption]?
 
     private lazy var longTap: UILongPressGestureRecognizer = {
-        return UILongPressGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.longTapEvent))
+        return UILongPressGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.activate))
     }()
     
     private lazy var singleTap: UITapGestureRecognizer = {
-        return UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.singleTapEvent))
+        return UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.activate))
     }()
 
-    
     private var active: Bool = false
     
     public private (set) var selectedItem: Int = -1
@@ -58,18 +57,10 @@ open class JOEmojiableBtn: UIButton {
         layer.masksToBounds = false
     }
 
-    @objc func longTapEvent() {
-        activate()
-    }
-
-    @objc func singleTapEvent() {
-        activate()
-    }
-
     /**
      Function that open the Options Selector
      */
-    fileprivate func activate() {
+    @objc private func activate() {
         if !active {
             guard let dataset = dataset else { fatalError("Dataset not initialized.") }
             

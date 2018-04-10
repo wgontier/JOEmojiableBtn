@@ -9,10 +9,13 @@
 import UIKit
 
 /// A type that represents an `InformationView`.
-private class InformationView: UIView {
+class InformationView: UIView {
     
     /// Constants for UI purposes.
     private enum DesignConstants {
+        
+        /// The width for the border lines.
+        static let borderLinesWidth: CGFloat = 1
         
         /// The color for the top and button borders in the current `InformationView`.
         static let lineColor = UIColor(red: 0.8, green: 0.81, blue: 0.82, alpha: 1)
@@ -35,20 +38,18 @@ private class InformationView: UIView {
         textInformation.text = "Release to Cancel"
         textInformation.textAlignment = .center
         textInformation.font = UIFont.boldSystemFont(ofSize: 12)
-        textInformation.alpha = 0
+        textInformation.isHidden = true
         return textInformation
     }()
     
     open override func draw(_ rect: CGRect) {
        
-        addSubview(textInformation)
-        
         func createLine(from: CGPoint, to: CGPoint) {
             let line = UIBezierPath()
             line.move(to: from)
             line.addLine(to: to)
             DesignConstants.lineColor.setStroke()
-            line.lineWidth = 1
+            line.lineWidth = DesignConstants.borderLinesWidth
             line.stroke()
         }
         
@@ -62,6 +63,10 @@ private class InformationView: UIView {
         dots.setLineDash(dashes, count: dashes.count, phase: 0)
         dots.stroke()
         
+        textInformation.frame = CGRect(origin: CGPoint(x: 0, y: DesignConstants.borderLinesWidth),
+                                       size: CGSize(width: rect.width, height: rect.height - (DesignConstants.borderLinesWidth * 2)))
+        addSubview(textInformation)
+        
         createLine(from: .zero, to: CGPoint(x: rect.width, y: 0))
         createLine(from: CGPoint(x: 0, y: rect.height), to: CGPoint(x: rect.width, y: rect.height))
         
@@ -71,7 +76,7 @@ private class InformationView: UIView {
     ///
     /// - Parameter active: The view should activate/deactivate.
     func activateInformationView(_ active: Bool) {
-        textInformation.alpha = active ? 1 : 0
+        textInformation.isHidden = !active
     }
 }
 

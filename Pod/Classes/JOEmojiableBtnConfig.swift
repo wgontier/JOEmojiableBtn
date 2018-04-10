@@ -45,7 +45,7 @@ public struct JOEmojiableConfig {
     /// A `default` definition of `JOEmojiableConfig`.
     public static let `default` = JOEmojiableConfig(spacing: 6,
                                                     size: 40,
-                                                    minSize: 14,
+                                                    minSize: 34,
                                                     maxSize: 80,
                                                     spaceBetweenComponents: 30)
 }

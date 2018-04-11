@@ -72,11 +72,14 @@ class InformationView: UIView {
         
     }
     
-    /// Activate / Deactivate the current `InformationView`.
-    ///
-    /// - Parameter active: The view should activate/deactivate.
-    func activateInformationView(_ active: Bool) {
-        textInformation.isHidden = !active
+    /// Show the current `InformationView`.
+    func show() {
+        textInformation.isHidden = false
+    }
+    
+    /// Hide the current `InformationView`.
+    func hide() {
+        textInformation.isHidden = true
     }
 }
 

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "JOEmojiableBtn"
-  s.version          = "0.1.0"
+  s.version          = "3.0.0"
   s.summary          = "Option selector that works similar to Reactions by fb"
 
   s.description      = "Totally customizable Options (Emoji) Selector based on Reactions"
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/lojals/JOEmojiableBtn.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/lojals_'
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'

@@ -26,6 +26,14 @@ public struct JOEmojiableConfig {
     /// The space between the `SelectorView` and the `InformationView`.
     let spaceBetweenComponents: CGFloat
     
+    var heightForMinSize: CGFloat {
+        return minSize + 2 * spacing
+    }
+    
+    var heightForSize: CGFloat {
+        return size + 2 * spacing
+    }
+    
     /// Creates an instance of `JOEmojiableConfig`
     ///
     /// - Parameters:

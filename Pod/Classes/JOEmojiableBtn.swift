@@ -101,7 +101,7 @@ open class JOEmojiableBtn: UIButton {
             backgroundView.addSubview(informationView)
             
             let config = self.config
-            let sizeBtn = CGSize(width: xPosition(for: dataset.count), height: config.size + 2 * config.spacing)
+            let sizeBtn = CGSize(width: xPosition(for: dataset.count), height: config.heightForSize)
             optionsView = UIView(frame: CGRect(x: originPoint.x, y: originPoint.y - sizeBtn.height, width: sizeBtn.width, height: sizeBtn.height))
             optionsView.layer.cornerRadius  = optionsView.frame.height / 2
             optionsView.backgroundColor     = .white
@@ -152,7 +152,7 @@ open class JOEmojiableBtn: UIButton {
                 if finished && i == (dataset.count / 2) {
                     UIView.animate(withDuration: 0.1, animations: { () -> Void in
                         self.optionsView.alpha = 0
-                        self.optionsView.frame.origin.y = self.originPoint.y - self.config.size + 2 * self.config.spacing
+                        self.optionsView.frame.origin.y = self.originPoint.y - self.config.heightForSize
                     }, completion: { (finished) -> Void in
                         self.isActive = false
                         self.backgroundView.removeFromSuperview()
@@ -175,7 +175,7 @@ open class JOEmojiableBtn: UIButton {
         informationView.show()
         let config = self.config
         UIView.animate(withDuration: 0.3) { () -> Void in
-            let sizeBtn = CGSize(width: self.xPosition(for: dataset.count), height: config.size + 2 * config.spacing)
+            let sizeBtn = CGSize(width: self.xPosition(for: dataset.count), height: config.heightForSize)
             self.optionsView.frame = CGRect(origin: CGPoint(x: self.originPoint.x, y: self.originPoint.y - (config.spaceBetweenComponents + sizeBtn.height)), size: sizeBtn)
             self.optionsView.layer.cornerRadius = sizeBtn.height / 2
             for (idx, view) in self.optionsView.subviews.enumerated() {
@@ -196,7 +196,7 @@ open class JOEmojiableBtn: UIButton {
             let config = self.config
             UIView.animate(withDuration: 0.3) { () -> Void in
                 let previousOption = CGFloat(dataset.count - 1)
-                let sizeBtn = CGSize(width: previousOption * (config.spacing + config.minSize) + config.maxSize, height: config.minSize + 2 * config.spacing)
+                let sizeBtn = CGSize(width: previousOption * (config.spacing + config.minSize) + config.maxSize, height: config.heightForMinSize)
                 self.optionsView.frame = CGRect(origin: CGPoint(x: self.originPoint.x, y: self.originPoint.y - (config.spaceBetweenComponents + sizeBtn.height)),
                                             size: sizeBtn)
                 self.optionsView.layer.cornerRadius = sizeBtn.height / 2

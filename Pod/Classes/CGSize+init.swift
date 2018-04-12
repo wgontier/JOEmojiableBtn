@@ -9,7 +9,7 @@
 import Foundation
 
 extension CGSize {
-    
+
     /// Creates an instance of `CGSize` with the same width and height.
     ///
     /// - Parameter sideSize: Size of the side.

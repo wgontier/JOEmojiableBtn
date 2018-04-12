@@ -10,30 +10,30 @@ import Foundation
 
 /// A type representing the basic configurations for a `JOEmojiableBtn`.
 public struct JOEmojiableConfig {
-    
+
     /// The space between options.
     let spacing: CGFloat
-    
+
     /// The default size for an option.
     let size: CGFloat
-    
+
     /// The minimum size when an option is being selected.
     let minSize: CGFloat
-    
+
     /// The maximum size when the option is beign selected.
     let maxSize: CGFloat
-    
+
     /// The space between the `SelectorView` and the `InformationView`.
     let spaceBetweenComponents: CGFloat
-    
+
     var heightForMinSize: CGFloat {
         return minSize + 2 * spacing
     }
-    
+
     var heightForSize: CGFloat {
         return size + 2 * spacing
     }
-    
+
     /// Creates an instance of `JOEmojiableConfig`
     ///
     /// - Parameters:
@@ -49,7 +49,7 @@ public struct JOEmojiableConfig {
         self.maxSize = maxSize
         self.spaceBetweenComponents = spaceBetweenComponents
     }
-    
+
     /// A `default` definition of `JOEmojiableConfig`.
     public static let `default` = JOEmojiableConfig(spacing: 6,
                                                     size: 40,

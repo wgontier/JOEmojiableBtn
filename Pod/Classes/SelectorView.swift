@@ -10,12 +10,12 @@ import UIKit
 
 /// Describes a type that is informed of events occurring within a `SelectorView`.
 public protocol SelectorViewDelegate: class {
-    
+
     /// This function is dispatched when `touchesMoved` is triggered in `SelectorView`.
     ///
     /// - Parameter point: CGPoint where the finger moved.
     func movedTo(_ point: CGPoint)
-    
+
     /// This function is dispatched when `touchesEnded` is triggered in `SelectorView`.
     ///
     /// - Parameter point: CGPoint where the finger move ended.
@@ -24,7 +24,7 @@ public protocol SelectorViewDelegate: class {
 
 /// A type that represents the SelectorView where options are shown.
 open class SelectorView: UIView {
-    
+
     /// The object that acts as the delegate of the `SelectorView`.
     weak var delegate: SelectorViewDelegate?
 

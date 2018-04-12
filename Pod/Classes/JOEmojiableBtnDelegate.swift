@@ -10,22 +10,21 @@ import Foundation
 
 /// <#Description#>
 public protocol JOEmojiableDelegate: class {
-    
+
     /// <#Description#>
     ///
     /// - Parameters:
     ///   - sender: <#sender description#>
     ///   - index: <#index description#>
     func selectedOption(_ sender: JOEmojiableBtn, index: Int)
-    
+
     /// <#Description#>
     ///
     /// - Parameter sender: <#sender description#>
     func singleTap(_ sender: JOEmojiableBtn)
-    
+
     /// <#Description#>
     ///
     /// - Parameter sender: <#sender description#>
     func cancelledAction(_ sender: JOEmojiableBtn)
 }
-

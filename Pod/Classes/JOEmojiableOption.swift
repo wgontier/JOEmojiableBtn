@@ -10,13 +10,13 @@ import Foundation
 
 /// A type that represents the option of a selector.
 public struct JOEmojiableOption {
-    
+
     /// The image will be used for the option represented. (This image should be added to the bundle).
     let image: String
-    
+
     /// The name of the option represented.
     let name: String
-    
+
     /// Creates an instance of `JOEmojiableOption`.
     ///
     /// - Parameters:

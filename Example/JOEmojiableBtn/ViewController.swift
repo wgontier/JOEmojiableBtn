@@ -16,7 +16,7 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         static var buttonFontLabel = UIFont.systemFont(ofSize: 11)
         static var sampleButtonSize = CGSize(width: 100, height: 50)
     }
-    
+
     let optionsDataset = [
         JOEmojiableOption(image: "img_1", name: "dislike"),
         JOEmojiableOption(image: "img_2", name: "broken"),
@@ -25,7 +25,7 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         JOEmojiableOption(image: "img_5", name: "meh!"),
         JOEmojiableOption(image: "img_6", name: "ahh!")
     ]
-    
+
     lazy var label: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 30, width: self.view.frame.width, height: 30))
         label.text = "Long tap in the buttons"
@@ -33,8 +33,7 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         label.textAlignment = .center
         return label
     }()
-    
-    
+
     lazy var labelInfo: UILabel = {
         let labelInfo = UILabel(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: 30))
         labelInfo.text = ""
@@ -42,7 +41,7 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         labelInfo.textAlignment = .center
         return labelInfo
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,7 +63,7 @@ class ViewController: UIViewController, JOEmojiableDelegate {
                                        minSize: 34,
                                        maxSize: 45,
                                        spaceBetweenComponents: 30)
-        
+
         let buttonSample2 = JOEmojiableBtn(frame: CGRect(origin: CGPoint(x: 40, y: 300),
                                                          size: DesignConstants.sampleButtonSize),
                                            config: config)

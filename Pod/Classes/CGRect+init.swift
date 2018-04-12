@@ -9,7 +9,7 @@
 import Foundation
 
 extension CGRect {
-    
+
     /// Creates an instance of `CGRect` with the same width and height.
     ///
     /// - Parameters:

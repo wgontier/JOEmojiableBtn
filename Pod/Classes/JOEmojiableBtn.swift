@@ -8,21 +8,22 @@
 
 import UIKit
 
-/// <#Description#>
+/// A type that represents the selector with options froma dataset.
 open class JOEmojiableBtn: UIButton {
     
     /// Constants used for UI component layout.
     private enum DesignConstants {
         
-        /// <#Description#>
-        static let leftThresholdLoseFocus: CGFloat = 50
+        /// The bottom threshold area to release / cancel the selection.
+        static let bottomThresholdLoseFocus: CGFloat = 50
         
-        /// <#Description#>
-        static let rightThresholdLoseFocus: CGFloat = 30
+        /// The top threshold area to release / cancel the selection.
+        static let topThresholdLoseFocus: CGFloat = 30
         
-        /// <#Description#>
+        /// A `CGRect` that match with the screen rect.
         static let screenRect = UIScreen.main.bounds
         
+        /// The size of the option when the expande animation start.
         static let sizeBeforeOpen: CGFloat = 10
     }
     
@@ -42,6 +43,7 @@ open class JOEmojiableBtn: UIButton {
         backgroundView.backgroundColor = .clear
         return backgroundView
     }()
+    
     private var informationView: InformationView!
     private var optionsView: UIView!
 
@@ -87,29 +89,9 @@ open class JOEmojiableBtn: UIButton {
             selectedItem = nil
             isActive = true
             
-            originPoint = superview?.convert(frame.origin, to: nil) ?? .zero
-
-            if originPoint != frame.origin {
-                backgroundView.frame.origin.x -= originPoint.x
-                backgroundView.frame.origin.y -= originPoint.y
-            }
-
-            superview?.addSubview(backgroundView)
-            
-            informationView = InformationView(frame: CGRect(x: 0, y: originPoint.y, width: DesignConstants.screenRect.width, height: frame.height))
-            informationView.backgroundColor = .white
-            backgroundView.addSubview(informationView)
-            
             let config = self.config
             let sizeBtn = CGSize(width: xPosition(for: dataset.count), height: config.heightForSize)
-            optionsView = UIView(frame: CGRect(x: originPoint.x, y: originPoint.y - sizeBtn.height, width: sizeBtn.width, height: sizeBtn.height))
-            optionsView.layer.cornerRadius  = optionsView.frame.height / 2
-            optionsView.backgroundColor     = .white
-            optionsView.layer.shadowColor   = UIColor.lightGray.cgColor
-            optionsView.layer.shadowOffset  = .zero
-            optionsView.layer.shadowOpacity = 0.5
-            optionsView.alpha               = 0.3
-            backgroundView.addSubview(optionsView)
+            resetUI()
             
             UIView.animate(withDuration: 0.2, animations: { () -> Void in
                 self.optionsView.frame.origin.y = self.originPoint.y - (config.spaceBetweenComponents + sizeBtn.height)
@@ -117,8 +99,8 @@ open class JOEmojiableBtn: UIButton {
             })
 
             for i in 0..<dataset.count {
-                let imageFrame = CGRect(x: xPosition(for: i), y: sizeBtn.height * 1.2, sideSize: DesignConstants.sizeBeforeOpen)
-                let option = UIImageView(frame: imageFrame)
+                let optionFrame = CGRect(x: xPosition(for: i), y: sizeBtn.height * 1.2, sideSize: DesignConstants.sizeBeforeOpen)
+                let option = UIImageView(frame: optionFrame)
                 option.image = UIImage(named: dataset[i].image)
                 option.alpha = 0.6
                 optionsView.addSubview(option)
@@ -126,26 +108,27 @@ open class JOEmojiableBtn: UIButton {
                     option.frame.origin.y = config.spacing
                     option.alpha = 1
                     option.frame.size = CGSize(sideSize: config.size)
-                    option.center = CGPoint(x: imageFrame.origin.x + config.size / 2, y: config.spacing + config.size / 2)
+                    let sizeCenter = config.size / 2
+                    option.center = CGPoint(x: optionFrame.origin.x + sizeCenter, y: config.spacing + sizeCenter)
                 }, completion: nil)
             }
-
-            
         }
     }
 
-    /// Function that collapse and close the Options Selector
+    /// Function that collapse and close the Options Selector.
     private func collapseOptions() {
         guard let dataset = dataset else { fatalError("Dataset not initialized.") }
-        
-        let selectedItem = self.selectedItem ?? -1
-        
+
         for (i, option) in optionsView.subviews.enumerated() {
             UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: .curveEaseInOut, animations: { () -> Void in
                 self.informationView.alpha = 0
                 option.alpha = 0.3
                 option.frame.size = CGSize(sideSize: DesignConstants.sizeBeforeOpen)
-                let yPosForOption: CGFloat = (selectedItem == i ? -self.optionsView.frame.height : self.optionsView.frame.height) + self.config.size / 2
+                var yPosForOption: CGFloat = self.optionsView.frame.height + self.config.size / 2
+                
+                if let selectedItem = self.selectedItem, selectedItem == i {
+                    yPosForOption = -self.optionsView.frame.height
+                }
                 
                 option.center = CGPoint(x: self.xPosition(for: i) + self.config.size / 2, y: yPosForOption)
             }, completion: { (finished) -> Void in
@@ -156,10 +139,10 @@ open class JOEmojiableBtn: UIButton {
                     }, completion: { (finished) -> Void in
                         self.isActive = false
                         self.backgroundView.removeFromSuperview()
-                        if selectedItem < 0 {
-                            self.delegate?.cancelledAction(self)
-                        } else {
+                        if let selectedItem = self.selectedItem {
                             self.delegate?.selectedOption(self, index: selectedItem)
+                        } else {
+                            self.delegate?.cancelledAction(self)
                         }
                     })
                 }
@@ -202,17 +185,17 @@ open class JOEmojiableBtn: UIButton {
                 self.optionsView.layer.cornerRadius = sizeBtn.height / 2
                 var last: CGFloat = index != 0 ? config.spacing : 0
                 
-                let centerYForMinSize = config.minSize / 2
-                let centerYForOption = centerYForMinSize + config.spacing
+                let minSizeCenter = config.minSize / 2
+                let centerYForOption = minSizeCenter + config.spacing
                 
                 for (idx, view) in self.optionsView.subviews.enumerated() {
                     view.frame = CGRect(x: last, y: config.spacing, sideSize: config.minSize)
-                    switch idx {
+                    switch(idx){
                     case (index-1):
-                        view.center.y = centerYForOption
+                        view.center.y = minSizeCenter
                         last += config.minSize
-                    case index:
-                        view.frame = CGRect(x: last, y: -centerYForMinSize, sideSize: config.maxSize)
+                    case (index):
+                        view.frame = CGRect(x: last, y: -(config.maxSize/2), sideSize: config.maxSize)
                         last += config.maxSize
                     default:
                         view.center.y = centerYForOption
@@ -231,6 +214,34 @@ open class JOEmojiableBtn: UIButton {
         let option = CGFloat(option)
         return (option + 1) * config.spacing + config.size * option
     }
+    
+    /// Reset the UI to the initial state.
+    private func resetUI() {
+        guard let dataset = dataset else { fatalError("Dataset not initialized.") }
+        
+        originPoint = superview?.convert(frame.origin, to: nil) ?? .zero
+        
+        if originPoint != frame.origin {
+            backgroundView.frame.origin.x -= originPoint.x
+            backgroundView.frame.origin.y -= originPoint.y
+        }
+        
+        superview?.addSubview(backgroundView)
+        
+        informationView = InformationView(frame: CGRect(x: 0, y: originPoint.y, width: DesignConstants.screenRect.width, height: frame.height))
+        informationView.backgroundColor = .white
+        backgroundView.addSubview(informationView)
+        
+        let sizeBtn = CGSize(width: xPosition(for: dataset.count), height: config.heightForSize)
+        optionsView = UIView(frame: CGRect(origin: CGPoint(x: originPoint.x, y: originPoint.y - sizeBtn.height), size: sizeBtn))
+        optionsView.layer.cornerRadius  = optionsView.frame.height / 2
+        optionsView.backgroundColor     = .white
+        optionsView.layer.shadowColor   = UIColor.lightGray.cgColor
+        optionsView.layer.shadowOffset  = .zero
+        optionsView.layer.shadowOpacity = 0.5
+        optionsView.alpha               = 0.3
+        backgroundView.addSubview(optionsView)
+    }
 }
 
 // MARK: - SelectorViewDelegate
@@ -238,9 +249,10 @@ extension JOEmojiableBtn: SelectorViewDelegate {
     
     public func movedTo(_ point: CGPoint) {
         guard let dataset = dataset else { fatalError("Dataset not initialized.") }
-
         let relativeSizePerOption = optionsView.frame.width / CGFloat(dataset.count)
-        if point.y < (optionsView.frame.minY - DesignConstants.leftThresholdLoseFocus) || point.y > (informationView.frame.maxY + DesignConstants.rightThresholdLoseFocus) {
+        
+        // Check if the point's position is inside the defined area.
+        if point.y < (optionsView.frame.minY - DesignConstants.bottomThresholdLoseFocus) || point.y > (informationView.frame.maxY + DesignConstants.topThresholdLoseFocus) {
             loseFocusFromOptions()
         } else {
             if point.x - originPoint.x > 0 && point.x < optionsView.frame.maxX {

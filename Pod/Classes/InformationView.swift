@@ -75,6 +75,7 @@ class InformationView: UIView {
     /// Show the current `InformationView`.
     func show() {
         textInformation.isHidden = false
+        alpha = 1
     }
     
     /// Hide the current `InformationView`.

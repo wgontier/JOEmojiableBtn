@@ -31,7 +31,8 @@ open class SelectorView: UIView {
     /// Sent to the gesture recognizer when one or more fingers move in the associated view.
     ///
     /// - Parameters:
-    ///   - touches: A set of UITouch instances in the event represented by event that represent touches in the UITouchPhaseMoved phase.
+    ///   - touches: A set of UITouch instances in the event represented by
+    ///     event that represent touches in the UITouchPhaseMoved phase.
     ///   - event: A UIEvent object representing the event to which the touches belong.
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = (touches.first?.location(in: self)) else { return }
@@ -41,7 +42,8 @@ open class SelectorView: UIView {
     /// Sent to the gesture recognizer when one or more fingers lift from the associated view.
     ///
     /// - Parameters:
-    ///   - touches: A set of UITouch instances in the event represented by event that represent the touches in the UITouchPhaseEnded phase.
+    ///   - touches: A set of UITouch instances in the event represented by event that represent
+    ///     the touches in the UITouchPhaseEnded phase.
     ///   - event: A UIEvent object representing the event to which the touches belong.
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = (touches.first?.location(in: self)) else { return }

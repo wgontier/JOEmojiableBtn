@@ -52,11 +52,13 @@ open class JOEmojiableBtn: UIButton {
     // MARK: - Events declaration
 
     private lazy var longTap: UILongPressGestureRecognizer = {
-        return UILongPressGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.expandOptions))
+        return UILongPressGestureRecognizer(target: self,
+                                            action: #selector(JOEmojiableBtn.expandOptions))
     }()
 
     private lazy var singleTap: UITapGestureRecognizer = {
-        return UITapGestureRecognizer(target: self, action: #selector(JOEmojiableBtn.expandOptions))
+        return UITapGestureRecognizer(target: self,
+                                      action: #selector(JOEmojiableBtn.expandOptions))
     }()
 
     // MARK: - View lifecycle
@@ -99,17 +101,20 @@ open class JOEmojiableBtn: UIButton {
             })
 
             for i in 0..<dataset.count {
-                let optionFrame = CGRect(x: xPosition(for: i), y: sizeBtn.height * 1.2, sideSize: DesignConstants.sizeBeforeOpen)
+                let optionFrame = CGRect(x: xPosition(for: i), y: sizeBtn.height * 1.2,
+                                         sideSize: DesignConstants.sizeBeforeOpen)
                 let option = UIImageView(frame: optionFrame)
                 option.image = UIImage(named: dataset[i].image)
                 option.alpha = 0.6
                 optionsView.addSubview(option)
-                UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: .curveEaseInOut, animations: { () -> Void in
+                UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: .curveEaseInOut,
+                               animations: { () -> Void in
                     option.frame.origin.y = config.spacing
                     option.alpha = 1
                     option.frame.size = CGSize(sideSize: config.size)
                     let sizeCenter = config.size / 2
-                    option.center = CGPoint(x: optionFrame.origin.x + sizeCenter, y: config.spacing + sizeCenter)
+                    option.center = CGPoint(x: optionFrame.origin.x + sizeCenter,
+                                            y: config.spacing + sizeCenter)
                 }, completion: nil)
             }
         }
@@ -120,7 +125,8 @@ open class JOEmojiableBtn: UIButton {
         guard let dataset = dataset else { fatalError("Dataset not initialized.") }
 
         for (i, option) in optionsView.subviews.enumerated() {
-            UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: .curveEaseInOut, animations: { () -> Void in
+            UIView.animate(withDuration: 0.2, delay: 0.05 * Double(i), options: .curveEaseInOut,
+                           animations: { () -> Void in
                 self.informationView.alpha = 0
                 option.alpha = 0.3
                 option.frame.size = CGSize(sideSize: DesignConstants.sizeBeforeOpen)
@@ -130,7 +136,8 @@ open class JOEmojiableBtn: UIButton {
                     yPosForOption = -self.optionsView.frame.height
                 }
 
-                option.center = CGPoint(x: self.xPosition(for: i) + self.config.size / 2, y: yPosForOption)
+                option.center = CGPoint(x: self.xPosition(for: i) + self.config.size / 2,
+                                        y: yPosForOption)
             }, completion: { (finished) -> Void in
                 if finished && i == (dataset.count / 2) {
                     UIView.animate(withDuration: 0.1, animations: { () -> Void in
@@ -158,8 +165,10 @@ open class JOEmojiableBtn: UIButton {
         informationView.show()
         let config = self.config
         UIView.animate(withDuration: 0.3) { () -> Void in
-            let sizeBtn = CGSize(width: self.xPosition(for: dataset.count), height: config.heightForSize)
-            self.optionsView.frame = CGRect(origin: CGPoint(x: self.originPoint.x, y: self.originPoint.y - (config.spaceBetweenComponents + sizeBtn.height)), size: sizeBtn)
+            let sizeBtn = CGSize(width: self.xPosition(for: dataset.count),
+                                 height: config.heightForSize)
+            let originOptionView = CGPoint(x: self.originPoint.x, y: self.originPoint.y - (config.spaceBetweenComponents + sizeBtn.height))
+            self.optionsView.frame = CGRect(origin: originOptionView, size: sizeBtn)
             self.optionsView.layer.cornerRadius = sizeBtn.height / 2
             for (idx, view) in self.optionsView.subviews.enumerated() {
                 view.frame = CGRect(x: self.xPosition(for: idx), y: config.spacing, sideSize: config.size)
@@ -181,7 +190,7 @@ open class JOEmojiableBtn: UIButton {
                 let previousOption = CGFloat(dataset.count - 1)
                 let sizeBtn = CGSize(width: previousOption * (config.spacing + config.minSize) + config.maxSize, height: config.heightForMinSize)
                 self.optionsView.frame = CGRect(origin: CGPoint(x: self.originPoint.x, y: self.originPoint.y - (config.spaceBetweenComponents + sizeBtn.height)),
-                                            size: sizeBtn)
+                                                size: sizeBtn)
                 self.optionsView.layer.cornerRadius = sizeBtn.height / 2
                 var last: CGFloat = index != 0 ? config.spacing : 0
 
@@ -190,11 +199,11 @@ open class JOEmojiableBtn: UIButton {
 
                 for (idx, view) in self.optionsView.subviews.enumerated() {
                     view.frame = CGRect(x: last, y: config.spacing, sideSize: config.minSize)
-                    switch(idx) {
+                    switch idx {
                     case (index-1):
                         view.center.y = minSizeCenter
                         last += config.minSize
-                    case (index):
+                    case index:
                         view.frame = CGRect(x: last, y: -(config.maxSize/2), sideSize: config.maxSize)
                         last += config.maxSize
                     default:
@@ -232,8 +241,9 @@ open class JOEmojiableBtn: UIButton {
         informationView.backgroundColor = .white
         backgroundView.addSubview(informationView)
 
-        let sizeBtn = CGSize(width: xPosition(for: dataset.count), height: config.heightForSize)
-        optionsView = UIView(frame: CGRect(origin: CGPoint(x: originPoint.x, y: originPoint.y - sizeBtn.height), size: sizeBtn))
+        let optionsViewSize = CGSize(width: xPosition(for: dataset.count), height: config.heightForSize)
+        let optionsViewOrigin = CGPoint(x: originPoint.x, y: originPoint.y - optionsViewSize.height)
+        optionsView = UIView(frame: CGRect(origin: optionsViewOrigin, size: optionsViewSize))
         optionsView.layer.cornerRadius  = optionsView.frame.height / 2
         optionsView.backgroundColor     = .white
         optionsView.layer.shadowColor   = UIColor.lightGray.cgColor

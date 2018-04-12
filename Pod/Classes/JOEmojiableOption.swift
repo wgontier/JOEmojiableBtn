@@ -11,7 +11,8 @@ import Foundation
 /// A type that represents the option of a selector.
 public struct JOEmojiableOption {
 
-    /// The image will be used for the option represented. (This image should be added to the bundle).
+    /// The image will be used for the option represented.
+    /// (This image should be added to the bundle).
     let image: String
 
     /// The name of the option represented.
@@ -20,7 +21,8 @@ public struct JOEmojiableOption {
     /// Creates an instance of `JOEmojiableOption`.
     ///
     /// - Parameters:
-    ///   - image: The image will be used for the option represented. (This image should be added to the bundle).
+    ///   - image: The image will be used for the option represented.
+    ///     (This image should be added to the bundle).
     ///   - name: The name of the option represented.
     public init(image: String, name: String) {
         self.image = image

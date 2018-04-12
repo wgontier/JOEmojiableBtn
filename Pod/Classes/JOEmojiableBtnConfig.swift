@@ -3,7 +3,6 @@
 //  JOEmojiableBtn
 //
 //  Created by Jorge R Ovalle Z on 4/6/18.
-//  Copyright © 2018 Jorge Ovalle. All rights reserved.
 //
 
 import Foundation

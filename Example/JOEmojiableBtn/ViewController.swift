@@ -3,7 +3,6 @@
 //  JOEmojiableBtn
 //
 //  Created by Jorge Raul Ovalle Zuleta on 2/28/16.
-//  Copyright © 2018 Jorge Ovalle. All rights reserved.
 //
 
 import UIKit
@@ -85,11 +84,6 @@ class ViewController: UIViewController, JOEmojiableDelegate {
     }
     
     // MARK: JOEmojiableDelegate
-
-    func singleTap(_ sender: JOEmojiableBtn) {
-        print("Single tap action")
-        labelInfo.text = "Single tap action"
-    }
 
     func selectedOption(_ sender: JOEmojiableBtn, index: Int) {
         print("Option \(index) selected")

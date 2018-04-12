@@ -3,7 +3,6 @@
 //  JOEmojiableBtn
 //
 //  Created by Jorge Ovalle on 02/29/2016.
-//  Copyright (c) 2016 Jorge Ovalle. All rights reserved.
 //
 
 import UIKit

@@ -3,28 +3,22 @@
 //  JOEmojiableBtn
 //
 //  Created by Jorge R Ovalle Z on 4/11/18.
-//  Copyright © 2018 Jorge Ovalle. All rights reserved.
 //
 
 import Foundation
 
-/// <#Description#>
+/// Describes a type that is informed of events occurring within a `JOEmojiableBtn`.
 public protocol JOEmojiableDelegate: class {
 
-    /// <#Description#>
+    /// The user selected an option from the sender.
     ///
     /// - Parameters:
-    ///   - sender: <#sender description#>
-    ///   - index: <#index description#>
+    ///   - sender: The `JOEmojiableBtn` which is sending the action.
+    ///   - index: Index of the selected option.
     func selectedOption(_ sender: JOEmojiableBtn, index: Int)
 
-    /// <#Description#>
+    /// The user cancelled the option selection.
     ///
-    /// - Parameter sender: <#sender description#>
-    func singleTap(_ sender: JOEmojiableBtn)
-
-    /// <#Description#>
-    ///
-    /// - Parameter sender: <#sender description#>
+    /// - Parameter sender: The `JOEmojiableBtn` which is sending the action.
     func cancelledAction(_ sender: JOEmojiableBtn)
 }

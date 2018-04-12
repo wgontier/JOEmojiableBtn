@@ -3,7 +3,6 @@
 //  JOEmojiableBtn
 //
 //  Created by Jorge Raul Ovalle Zuleta on 2/28/16.
-//  Copyright © 2018 Jorge Ovalle. All rights reserved.
 //
 
 import UIKit
@@ -56,11 +55,6 @@ open class JOEmojiableBtn: UIButton {
                                             action: #selector(JOEmojiableBtn.expandOptions))
     }()
 
-    private lazy var singleTap: UITapGestureRecognizer = {
-        return UITapGestureRecognizer(target: self,
-                                      action: #selector(JOEmojiableBtn.expandOptions))
-    }()
-
     // MARK: - View lifecycle
 
     /// Creates a new instace of `JOEmojiableBtn`.
@@ -74,7 +68,6 @@ open class JOEmojiableBtn: UIButton {
         super.init(frame: frame)
 
         addGestureRecognizer(longTap)
-        addGestureRecognizer(singleTap)
         layer.masksToBounds = false
     }
 

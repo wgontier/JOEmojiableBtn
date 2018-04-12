@@ -10,6 +10,8 @@ import UIKit
 import JOEmojiableBtn
 
 class ViewController: UIViewController, JOEmojiableDelegate {
+    
+    // MARK: DesignConstants
     enum DesignConstants {
         static var mainSampleColor = UIColor(red: 0.27, green: 0.69, blue: 0.67, alpha: 1)
         static var buttonCornerRadius: CGFloat = 25
@@ -17,6 +19,8 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         static var sampleButtonSize = CGSize(width: 100, height: 50)
     }
 
+    // MARK: Properties definition
+    
     let optionsDataset = [
         JOEmojiableOption(image: "img_1", name: "dislike"),
         JOEmojiableOption(image: "img_2", name: "broken"),
@@ -26,28 +30,31 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         JOEmojiableOption(image: "img_6", name: "ahh!")
     ]
 
-    lazy var label: UILabel = {
+    private var label: UILabel {
         let label = UILabel(frame: CGRect(x: 0, y: 30, width: self.view.frame.width, height: 30))
         label.text = "Long tap in the buttons"
         label.textColor = DesignConstants.mainSampleColor
         label.textAlignment = .center
         return label
+    }
+
+    private lazy var labelInfo: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: 30))
+        label.text = ""
+        label.textColor = UIColor(red: 0.27, green: 0.69, blue: 0.67, alpha: 1)
+        label.textAlignment = .center
+        return label
     }()
 
-    lazy var labelInfo: UILabel = {
-        let labelInfo = UILabel(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: 30))
-        labelInfo.text = ""
-        labelInfo.textColor = UIColor(red: 0.27, green: 0.69, blue: 0.67, alpha: 1)
-        labelInfo.textAlignment = .center
-        return labelInfo
-    }()
-
+    // MARK: View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.addSubview(label)
         view.addSubview(labelInfo)
 
+        // Sample 1 using `default` configuration.
         let buttonSample1 = JOEmojiableBtn(frame: CGRect(origin: CGPoint(x: 40, y: 200),
                                                          size: DesignConstants.sampleButtonSize))
         buttonSample1.delegate = self
@@ -58,6 +65,7 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         buttonSample1.dataset = optionsDataset
         view.addSubview(buttonSample1)
 
+        // Sample 2 using custom configuration.
         let config = JOEmojiableConfig(spacing: 2,
                                        size: 30,
                                        minSize: 34,
@@ -74,8 +82,9 @@ class ViewController: UIViewController, JOEmojiableDelegate {
         buttonSample2.setTitle("Long-tap me!", for: [.normal])
         buttonSample2.dataset = optionsDataset
         view.addSubview(buttonSample2)
-
     }
+    
+    // MARK: JOEmojiableDelegate
 
     func singleTap(_ sender: JOEmojiableBtn) {
         print("Single tap action")

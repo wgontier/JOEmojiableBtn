@@ -8,8 +8,6 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-There's also an [Objective-C implementation](https://github.com/Eke/EMEmojiableBtn) developed by [Eke](https://github.com/Eke).
-
 ### 📱🍕📱🍕📱🍕📱🍕📱
 
  ---
@@ -23,31 +21,32 @@ it, simply add the following line to your Podfile:
 pod "JOEmojiableBtn"
 ```
 
-
 ## Examples
 
 ### 1. Basic Instance
-This instance create a **JOEmojiableBtn** with the ~~Reactions Style~~.
+This instance create a **JOEmojiableBtn** using `default`  JOEmojiableBtnConfig.
+Images from  [Trump reactionpacks style](http://www.reactionpacks.com/packs/2c1a1e41-e9e9-407a-a532-3bfdfef6b3e6).
 
 #### Example Code
 
 ```swift
-let btn             = JOEmojiableBtn(frame: CGRectMake(40,200,50,50))
-btn.delegate        = self
-btn.backgroundColor = UIColor.greenColor()
-btn.dataset         = [
-    JOEmojiableOption(image: "img_1", name: "dislike"),
-    JOEmojiableOption(image: "img_2", name: "broken"),
-    JOEmojiableOption(image: "img_3", name: "he he"),
-    JOEmojiableOption(image: "img_4", name: "ooh"),
-    JOEmojiableOption(image: "img_5", name: "meh!"),
-    JOEmojiableOption(image: "img_6", name: "ahh!")
+let optionsDataset = [
+    JOEmojiableOption(image: "img_1", name: "img1"),
+    JOEmojiableOption(image: "img_2", name: "img2"),
+    JOEmojiableOption(image: "img_3", name: "img3"),
+    JOEmojiableOption(image: "img_4", name: "img4"),
+    JOEmojiableOption(image: "img_5", name: "img5"),
+    JOEmojiableOption(image: "img_6", name: "img6")
 ]
-self.view.addSubview(btn)
+
+let buttonSample1 = JOEmojiableBtn(frame: CGRect(origin: CGPoint(x: 40, y: 200), size: CGSize(width: 100, height: 50)))
+buttonSample1.delegate = self
+buttonSample1.backgroundColor = .green
+buttonSample1.dataset = optionsDataset
+view.addSubview(buttonSample1)
 ```
 
-![image](http://i.imgur.com/A6Z1oTI.gif)
-
+![Sample 1](https://user-images.githubusercontent.com/6756995/38659390-fa14b908-3dee-11e8-8885-df6828c07843.gif)
 
 
 ### 2. Custom styled instance
@@ -57,37 +56,23 @@ With this instance you can fully custom your component. Following the **JOEmojia
 
 You can custom your selector with the following variables, used in the 
 
-![image](http://i.imgur.com/e4zaaye.png?1)
-
+![687474703a2f2f692e696d6775722e636f6d2f65347a616179652e706e673f31](https://user-images.githubusercontent.com/6756995/38659568-b0955e30-3def-11e8-85fb-317b3f4cbc36.png)
 
 ![image](http://i.imgur.com/yNfyP3c.png?1)
 
 ```swift
-let config              = JOEmojiableConfig(spacing: 2, size: 30, minSize: 34, maxSize: 45, s_options_selector: 30)
-let btn2                = JOEmojiableBtn(frame: CGRectMake(40,300,50,50), config: config)
-btn2.delegate           = self
-btn2.backgroundColor    = UIColor(red:0.27, green:0.69, blue:0.67, alpha:1)
-btn2.layer.cornerRadius = 25
-btn2.dataset            = [
-    JOEmojiableOption(image: "img_1", name: "dislike"),
-    JOEmojiableOption(image: "img_2", name: "broken"),
-    JOEmojiableOption(image: "img_3", name: "he he"),
-    JOEmojiableOption(image: "img_4", name: "ooh"),
-    JOEmojiableOption(image: "img_5", name: "meh!"),
-    JOEmojiableOption(image: "img_6", name: "ahh!"),
-    JOEmojiableOption(image: "img_4", name: "ooh")
-]
-self.view.addSubview(btn2)
+let config = JOEmojiableConfig(spacing: 2,
+                                size: 30,
+                                minSize: 34,
+                                maxSize: 45,
+                                spaceBetweenComponents: 30)
+
+let buttonSample2 = JOEmojiableBtn(frame: CGRect(origin: CGPoint(x: 40, y: 300), size: CGSize(width: 100, height: 50)), config: config)
+buttonSample2.delegate = self
+buttonSample2.backgroundColor = .green
+buttonSample2.dataset = optionsDataset
+view.addSubview(buttonSample2)
 ```
-
-![image](http://i.imgur.com/G6PmoDE.gif)
-
-
-
-## To Do
-* Create different layouts, inferior, left, depending on the superview position.
-* Add Option labels.
-
 
 ## Author
 

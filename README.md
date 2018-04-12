@@ -23,8 +23,9 @@ pod "JOEmojiableBtn"
 
 ## Examples
 
-### 1. Basic Instance using `default`  JOEmojiableBtnConfig.
-This instance create a **JOEmojiableBtn** with the  [Trump reactionpacks style](http://www.reactionpacks.com/packs/2c1a1e41-e9e9-407a-a532-3bfdfef6b3e6).
+### 1. Basic Instance
+This instance create a **JOEmojiableBtn** using `default`  JOEmojiableBtnConfig.
+Images from  [Trump reactionpacks style](http://www.reactionpacks.com/packs/2c1a1e41-e9e9-407a-a532-3bfdfef6b3e6).
 
 #### Example Code
 

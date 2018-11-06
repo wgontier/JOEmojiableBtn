@@ -28,9 +28,9 @@ open class JOEmojiableBtn: UIButton {
 
     // MARK: - Properties declaration
 
-    open weak var delegate: JOEmojiableDelegate?
+    @IBInspectable open weak var delegate: JOEmojiableDelegate?
 
-    open var dataset: [JOEmojiableOption]?
+    @objc open var dataset: [JOEmojiableOption]?
 
     private var isActive: Bool = false
     public private (set) var selectedItem: Int?
@@ -62,7 +62,7 @@ open class JOEmojiableBtn: UIButton {
     /// - Parameters:
     ///   - frame: Frame of the button will open the selector
     ///   - config: The custom configuration for the UI components.
-    public init(frame: CGRect, config: JOEmojiableConfig = .default) {
+    @objc public init(frame: CGRect, config: JOEmojiableConfig = .default) {
         self.config = config
         self.dataset = []
         super.init(frame: frame)

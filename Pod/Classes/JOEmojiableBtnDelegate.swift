@@ -8,7 +8,7 @@
 import Foundation
 
 /// Describes a type that is informed of events occurring within a `JOEmojiableBtn`.
-public protocol JOEmojiableDelegate: class {
+@objc public protocol JOEmojiableDelegate: class {
 
     /// The user selected an option from the sender.
     ///

@@ -8,7 +8,7 @@
 import Foundation
 
 /// A type representing the basic configurations for a `JOEmojiableBtn`.
-public struct JOEmojiableConfig {
+public class JOEmojiableConfig : NSObject {    // ObjC Compatiblility
 
     /// The space between options.
     let spacing: CGFloat
@@ -41,7 +41,7 @@ public struct JOEmojiableConfig {
     ///   - minSize: The minimum size when an option is being selected.
     ///   - maxSize: The maximum size when the option is beign selected.
     ///   - spaceBetweenComponents: The space between the `SelectorView` and the `InformationView`.
-    public init(spacing: CGFloat, size: CGFloat, minSize: CGFloat, maxSize: CGFloat, spaceBetweenComponents: CGFloat) {
+    @objc public init(spacing: CGFloat, size: CGFloat, minSize: CGFloat, maxSize: CGFloat, spaceBetweenComponents: CGFloat) {
         self.spacing  = spacing
         self.size = size
         self.minSize = minSize
